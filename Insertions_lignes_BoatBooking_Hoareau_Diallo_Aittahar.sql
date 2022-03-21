@@ -1,8 +1,8 @@
 -- Insertions_lignes_BoatBooking_Hoareau_Diallo_Aittahar.sql
 
 
-----------------TABLE : BATEAU----------------
+----------------TABLE : XXX----------------
 INSERT INTO ...
 
-----------------TABLE : BATEAU----------------
+----------------TABLE : XXX----------------
 INSERT INTO ...
