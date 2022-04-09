@@ -1,7 +1,18 @@
 -- Insertions_lignes_BoatBooking_Hoareau_Diallo_Aittahar.sql
 
-----------------TABLE : XXX----------------
-INSERT INTO ...
+----------------TABLE : PORT----------------
+-- INSERT INTO PORT VALUES(prt_id,prt_nom,prt_addr_num,prt_addr_rue,prt_addr_cp,prt_addr_ville,prt_cap_bateau);
+DELETE FROM PORT;
+INSERT INTO PORT VALUES(1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10);
+INSERT INTO PORT VALUES(2,'Port de Saint-Gilles',3,'Port de St Gilles','97434','Saint-Gilles ',2);
+INSERT INTO PORT VALUES(3,'Port de Cap-d’Ail',1,'Av. du Port','06320','Cap-d''Ail',3);
+INSERT INTO PORT VALUES(4,'Port Vauban',1,'Av. de Verdun','06600','Antibes',10);
+INSERT INTO PORT VALUES(5,'Port Lympia',1430,'Quai Amiral Infernet','06300','Nice',4);
+INSERT INTO PORT VALUES(6,'Port Nice Carras',385,'Prom. des Anglais','06200','Nice',3);
+INSERT INTO PORT VALUES(7,'Port de la Rague',1,'Port de la Rague','06210','Mandelieu-la-Napoule',3);
+INSERT INTO PORT VALUES(8,'Port du Beal',110,'Bd du Midi Louise Moreau','06150','Cannes',5);
+INSERT INTO PORT VALUES(9,'Port de Pointe Croisette',1,'Bd de la Croisette','06400','Cannes',4);
+INSERT INTO PORT VALUES(10,'Port de Plaisance de Pornichet',1,'Port de Plaisance','44380','Pornichet',2);
 
 ----------------TABLE : BATEAU----------------
 -- INSERT INTO BATEAU VALUES (MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT); --Marque: XXXX & Type : XXX
