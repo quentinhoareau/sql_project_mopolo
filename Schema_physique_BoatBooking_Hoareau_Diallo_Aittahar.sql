@@ -97,7 +97,6 @@ create table BATEAU (
     BT_IMMATRICULE VARCHAR(8) not null,
     BT_NOM VARCHAR(30) not null constraint CKC_BT_NOM_BATEAU check (BT_NOM = upper(BT_NOM)),
     BT_PRT_NUM_EMPLACEMENT NUMBER(3) not null constraint CKC_BT_PRT_NUM_EMPLAC_PORT check (BT_PRT_NUM_EMPLACEMENT >= 1),
-    
     BT_COULEUR VARCHAR(30) not null,
     BT_VITESSE_MAX FLOAT(6) not null constraint CKC_BT_VITESSE_MAX_BATEAU check (
         BT_VITESSE_MAX between 1
@@ -138,14 +137,14 @@ create table BATEAU (
 /*==============================================================*/
 /* Table : LOCATION                                             */
 /*==============================================================*/
--- Non valide
+-- Valide
 create table LOCATION (
     CL_ID NUMBER(4) not null constraint CKC_CL_ID_LOCATION check (CL_ID >= 1),
-    BT_IMMATRICULE VARCHAR(XX) not null,
+    BT_IMMATRICULE VARCHAR(8) not null,
     LOC_DATE_DEBUT DATE not null,
     LOC_DATE_FIN DATE not null,
-    LOC_NOTE VARCHAR(XX),
+    LOC_NOTE VARCHAR(300),
     constraint PK_LOCATION primary key (CL_ID, BT_IMMATRICULE),
-    constraint FK_LOCATION_LOCATION_BATEAU foreign key (BT_IMMATRICULE) references BATEAU (BT_IMMATRICULE),
-    constraint FK_LOCATION_LOCATION2_CLIENT foreign key (CL_ID) references CLIENT (CL_ID)
+    constraint FK_LOCATION_BATEAU foreign key (BT_IMMATRICULE) references BATEAU (BT_IMMATRICULE),
+    constraint FK_LOCATION_CLIENT foreign key (CL_ID) references CLIENT (CL_ID)
 );
