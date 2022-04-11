@@ -125,8 +125,8 @@ create table BATEAU (
     ),
     BT_ANNEE DATE not null,
     BT_ETAT VARCHAR(7) default 'Neuf' not null constraint CKC_BT_ETAT_BATEAU check (BT_ETAT in ('Neuf', 'Bon', 'Mauvais')),
-    MRQ_ID NUMBER(4) not null constraint CKC_MRQ_ID_BATEAU check (MRQ_ID >= 1),
-    BTYPE_ID NUMBER(2) not null constraint CKC_BT_ID_BATEAU check (BT_ID >= 1),
+    MRQ_ID NUMBER(4) not null,
+    BTYPE_ID NUMBER(2) not null,
     PRT_ID VARCHAR(30) not null,
     constraint PK_BATEAU primary key (BT_IMMATRICULE),
     constraint FK_BATEAU_APPARTIENT_MARQUE foreign key (MRQ_ID) references MARQUE (MRQ_ID),
@@ -139,7 +139,7 @@ create table BATEAU (
 /*==============================================================*/
 -- Valide
 create table LOCATION (
-    CL_ID NUMBER(4) not null constraint CKC_CL_ID_LOCATION check (CL_ID >= 1),
+    CL_ID NUMBER(4) not null,
     BT_IMMATRICULE VARCHAR(8) not null,
     LOC_DATE_DEBUT DATE not null,
     LOC_DATE_FIN DATE not null,
