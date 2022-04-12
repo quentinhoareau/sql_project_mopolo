@@ -33,12 +33,13 @@ drop table PORT cascade constraints;
 /* Table : BATEAU_TYPE                                          */
 /*==============================================================*/
 -- Non valide
-create table BATEAU_TYPE (
-    BTYPE_ID NUMBER(2) not null constraint CKC_ID_BATEAU_TYPE check (BTYPE_ID >= 1),
-    BTYPE_NOM VARCHAR(40)
-    BTYPE_PRIX_HEURE FLOAT(5) not null constraint ckc_btype_prix check (BTYPE_PRIX_HEURE > 0),
-    constraint PK_BATEAU_TYPE primary key (BTYPE_ID)
-);
+CREATE TABLE
+    BATEAU_TYPE (
+        BTYPE_ID NUMBER(2) NOT NULL constraint CKC_ID_BATEAU_TYPE CHECK (BTYPE_ID >= 1),
+        BTYPE_NOM VARCHAR(40) NOT NULL constraint ckc_nom CHECK(LENGTH(BTYPE_NOM) <= 40),
+        BTYPE_PRIX_HEURE FLOAT(5) NOT NULL constraint ckc_btype_prix CHECK (BTYPE_PRIX_HEURE > 0),
+        constraint PK_BATEAU_TYPE primary key (BTYPE_ID)
+    );
 
 /*==============================================================*/
 /* Table : CLIENT                                               */
@@ -62,17 +63,17 @@ create table CLIENT (
 /* Table : MARQUE                                               */
 /*==============================================================*/
 -- Non valide
-create table MARQUE (
-    MRQ_ID NUMBER(4) not null,
-    MRQ_NOM VARCHAR(XX) not null,
-    MRQ_FABRICANT VARCHAR(XX) not null,
-    MRQ_DESC VARCHAR(XX),
-    MRQ_COEFF_MAJORATION FLOAT(3) not null constraint CKC_MRQ_COEFF_MAJORAT_MARQUE check (
-        MRQ_COEFF_MAJORATION between 0.1
-        and 1
-    ),
-    constraint PK_MARQUE primary key (MRQ_ID)
-);
+CREATE TABLE
+    MARQUE (
+        MRQ_ID NUMBER(4) NOT NULL CONSTRAINT CKC_ID CHECK(MRQ_ID > 0),
+        MRQ_NOM VARCHAR(50) NOT NULL CONSTRAINT CKC_NOM CHECK (LENGTH(MRQ_NOM) <= 50),
+        MRQ_FABRICANT VARCHAR(50) NOT NULL CONSTRAINT CKC_FAB CHECK (LENGTH(MRQ_FABRICANT) <= 50),
+        MRQ_DESC VARCHAR(1000) CONSTRAINT CKC_NOM CHECK (LENGTH(MRQ_DESC) <= 1000),
+        MRQ_COEFF_MAJORATION FLOAT(3) NOT NULL constraint CKC_MRQ_COEFF_MAJORAT_MARQUE CHECK (
+            MRQ_COEFF_MAJORATION BETWEEN 0.1 AND 1
+        ),
+        constraint PK_MARQUE primary key (MRQ_ID)
+    );
 
 /*==============================================================*/
 /* Table : PORT                                                 */
