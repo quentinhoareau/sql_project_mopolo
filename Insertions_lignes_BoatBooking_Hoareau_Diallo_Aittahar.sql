@@ -18,7 +18,7 @@ VALUES
 ----------------TABLE : BATEAU----------------
 -- INSERT INTO BATEAU VALUES (MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT); --Marque: XXXX & Type : XXX
 DELETE FROM BATEAU;
-INSERT INTO BATEAU
+INSERT INTO BATEAU(MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE_CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT)
 VALUES
    ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,NULL,1,NULL,9.75,3.12,1993,'Neuf'); --Marque: Hunter & Type : Moteur
    ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais'), --Marque: Nicholson & Type : Cabine
