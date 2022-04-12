@@ -2,7 +2,6 @@
 ----------------TABLE : PORT----------------
 -- INSERT INTO PORT VALUES(prt_id,prt_nom,prt_addr_num,prt_addr_rue,prt_addr_cp,prt_addr_ville,prt_cap_bateau);
 DELETE FROM PORT;
-
 INSERT INTO PORT
 VALUES
    (1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10),
@@ -19,7 +18,6 @@ VALUES
 ----------------TABLE : BATEAU----------------
 -- INSERT INTO BATEAU VALUES (MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT); --Marque: XXXX & Type : XXX
 DELETE FROM BATEAU;
-
 INSERT INTO BATEAU
 VALUES
    ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,NULL,1,NULL,9.75,3.12,1993,'Neuf'); --Marque: Hunter & Type : Moteur
@@ -48,7 +46,7 @@ VALUES
 
 
 ----------------TABLE : BATEAU_TYPE----------------
-DELETE FROM MARQUE;
+DELETE FROM BATEAU_TYPE;
 INSERT INTO BATEAU_TYPE
 VALUES
    (1, 'COQUE-OPEN', 2000),
