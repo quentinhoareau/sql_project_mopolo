@@ -35,8 +35,8 @@ drop table PORT cascade constraints;
 -- Non valide
 create table BATEAU_TYPE (
     BTYPE_ID NUMBER(2) not null constraint CKC_ID_BATEAU_TYPE check (BTYPE_ID >= 1),
-    BTYPE_NOM VARCHAR(XX),
-    BTYPE_PRIX_HEURE FLOAT(5) not null,
+    BTYPE_NOM VARCHAR(40)
+    BTYPE_PRIX_HEURE FLOAT(5) not null constraint ckc_btype_prix check (BTYPE_PRIX_HEURE > 0),
     constraint PK_BATEAU_TYPE primary key (BTYPE_ID)
 );
 
