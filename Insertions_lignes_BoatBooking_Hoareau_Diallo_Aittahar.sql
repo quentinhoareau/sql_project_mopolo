@@ -5,8 +5,7 @@ DELETE
 FROM PORT;
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         1,
         'Port de Toulon',
         13,
@@ -17,8 +16,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         2,
         'Port de Saint-Gilles',
         3,
@@ -29,8 +27,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         3,
         'Port de Cap-d’Ail',
         1,
@@ -41,8 +38,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         4,
         'Port Vauban',
         1,
@@ -53,8 +49,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         5,
         'Port Lympia',
         1430,
@@ -65,8 +60,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         6,
         'Port Nice Carras',
         385,
@@ -77,8 +71,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         7,
         'Port de la Rague',
         1,
@@ -89,8 +82,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         8,
         'Port du Beal',
         110,
@@ -101,8 +93,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         9,
         'Port de Pointe Croisette',
         1,
@@ -113,8 +104,7 @@ VALUES
     );
 
 INSERT INTO PORT
-VALUES
-(
+VALUES (
         10,
         'Port de Plaisance de Pornichet',
         1,
@@ -358,9 +348,11 @@ VALUES (
 
 --Marque: Moody & Type : Moteur
 ----------------TABLE : MARQUE----------------
+DELETE
+FROM MARQUE;
+
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         1,
         'RIVA',
         'RIVA',
@@ -369,8 +361,7 @@ VALUES
     );
 
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         2,
         'Boston-Whaler',
         'Boston-Whaler',
@@ -379,8 +370,7 @@ VALUES
     );
 
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         3,
         'ZODAC',
         'ZODAC',
@@ -389,8 +379,7 @@ VALUES
     );
 
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         4,
         'Quicksilver',
         'Quicksilver',
@@ -399,8 +388,7 @@ VALUES
     );
 
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         5,
         'Bayliner',
         'Bayliner',
@@ -409,8 +397,7 @@ VALUES
     );
 
 INSERT INTO MARQUE
-VALUES
-(
+VALUES (
         6,
         'Bénéteau',
         'Bénéteau',
@@ -419,6 +406,9 @@ VALUES
     );
 
 ----------------TABLE : BATEAU_TYPE----------------
+DELETE
+FROM BATEAU_TYPE;
+
 INSERT INTO BATEAU_TYPE
 VALUES(1, 'COQUE-OPEN', 2000);
 
