@@ -116,12 +116,10 @@ CREATE TABLE BATEAU (
     ),
     BT_NOTE VARCHAR(300),
     BT_LONGUEUR FLOAT(5) constraint CKC_BT_LONGUEUR_BATEAU CHECK (
-        BT_LONGUEUR IS NULL
-        OR (BT_LONGUEUR >= 1)
+       (BT_LONGUEUR >= 1
     ),
     BT_LARGEUR FLOAT(5) constraint CKC_BT_LARGEUR_BATEAU CHECK (
-        BT_LARGEUR IS NULL
-        OR (BT_LARGEUR >= 1)
+        BT_LARGEUR >= 1
     ),
     BT_ANNEE DATE NOT NULL,
     BT_ETAT VARCHAR(7) DEFAULT 'Neuf' NOT NULL constraint CKC_BT_ETAT_BATEAU CHECK (BT_ETAT IN ('Neuf', 'Bon', 'Mauvais')),
