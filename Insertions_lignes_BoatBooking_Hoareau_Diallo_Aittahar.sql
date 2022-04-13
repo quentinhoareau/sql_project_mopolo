@@ -21,7 +21,7 @@ VALUES (1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10),
 DELETE
 FROM BATEAU;
 
-INSERT INTOBATEAU(MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE_CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT)
+INSERT INTO BATEAU(MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE_CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT)
 VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,NULL,1,NULL,9.75,3.12,1993,'Neuf'); --Marque: Hunter & Type : Moteur 
 ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais'),--Marque: Nicholson & Type : Cabine 
 ('MAX20870','Wauquiez Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf'),--Marque: Wauquiez & Type : Moteur 
