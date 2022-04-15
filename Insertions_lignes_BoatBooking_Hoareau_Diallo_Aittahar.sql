@@ -58,3 +58,35 @@ VALUES (1, 'COQUE-OPEN', 2000),
 (6, 'JET-SKI', 50), 
 (7, 'VOILIER', 200), 
 (8, 'LUXE', 3500);
+
+----------------TABLE : CLIENT----------------
+DELETE
+FROM CLIENT;
+CL_ID NUMBER(4) NOT NULL constraint CKC_CL_ID_CLIENT CHECK (CL_ID >= 1),
+    CL_NOM VARCHAR(30) NOT NULL constraint CKC_CL_NOM_CLIENT CHECK (LEFT(CL_NOM, 1) = UPPER(LEFT(CL_NOM, 1))),
+    CL_PRENOM VARCHAR(30) NOT NULL constraint CKC_CL_PRENOM_CLIENT CHECK (LEFT(CL_PRENOM, 1) = UPPER(LEFT(CL_PRENOM, 1))),
+    CL_ADDR_NUM NUMBER(4) NOT NULL constraint CKC_CL_ADDR_NUM_CLIENT CHECK (CL_ADDR_NUM >= 1),
+    CL_ADDR_RUE VARCHAR(100) NOT NULL,
+    CL_ADDR_CP VARCHAR(5) NOT NULL constraint CKC_CL_ADDR_CP_SIZE_CLIENT CHECK (length(CL_ADDR_CP) > 4), constraint CKC_CL_ADDR_CP_NUMBER_CLIENT CHECK REGEXP_LIKE(CL_ADDR_CP, '^[[:digit:]]{9}$'),
+    CL_ADDR_VILLE VARCHAR(30) NOT NULL constraint CKC_CL_ADDR_VILLE_CLIENT CHECK (LEFT(CL_ADDR_VILLE, 1) = UPPER(LEFT(CL_ADDR_VILLE, 1))),
+    CL_EMAIL VARCHAR(100) NOT NULL,
+    CL_SECOND_EMAIL VARCHAR(100) constraint CKC_CL_SECOND_EMAIL_CLIENT CHECK (CL_SECOND_EMAIL != CL_EMAIL),
+    CL_TELEPHONE
+
+INSERT INTO CLIENT
+VALUES (1, 'Thompson', 'Alice', 4, 'Cite Dupetit-Thouars', '75003', 'Paris', 'ThompsonAlice@msn.com', '0693283578'),
+(2, 'Martin', 'Sophie', 44, 'Rue d\'Orsel', '75018', 'Paris', 'Sophie45@msn.com', '0146069341'),
+(3, 'White', 'Iona', 43, 'Rue de Levis', '75017', 'Paris', 'WhiteIona@msn.com', '0156790296'),
+(4, 'Robinson', 'Chloe', 61, 'Rue de Vouille', '75003', 'Paris', 'RobinsonChloe@msn.com', '0630496774'),
+(5, 'Moore', 'Lucia', 21, 'Boulevard de Reuilly', '75012', 'Paris', 'MooreLucia@msn.com', '06058406999'),
+(6, 'Walker', 'Dale', 101, ' Rue Vieille du Temple', '75008', 'Paris', 'WalkerDale@msn.com', '0142250220'),
+(7, 'Davies', 'Georgina', 48, 'rue de Lille', '91200', 'Île-de-France', 'DaviesGeorgina@gmail.com', '0693211578'),
+(8, 'Brown', 'Nicole', 35, 'Rue Hubert de Lisle', '56100', 'Bretagne', 'BrownNicole@gmail.com', '0229280449'),
+(9, 'Smith', 'Keira', 18, 'Avenue Jules Ferry', '13001', 'MARSEILLE', 'SmithKeira@gmail.com', '0404995975'),
+(10, 'Taylor', 'Haleema', 16, 'Rue de la Mare aux Carats', '93100', 'MONTREUIL', 'TaylorHaleema@msn.com', '0184012419'),
+(11, 'Jones', 'Tanisha', 50, 'Boulevard Amiral Courbet', '94310', 'Orly', 'JonesTanisha@gmail.com', '0139749610'),
+(12, 'Williams', 'Aliyah', 74, 'Boulevard Aristide Briand', '71200', 'Le creusot', 'WilliamsAliyah@hotmail.fr', '0338756253'),
+(13, 'Wilson', 'Willie', 16, 'Rue Jean Vilar', '24100', 'BERGERAC', 'WilsonWillie@msn.com', '0574719417'),
+(14, 'Johnson', 'Aimee', 78, 'Rue Cazade', '91210', 'Draveil', 'JohnsonAimee@gmail.com', '0158134536'),
+(15, 'Thomas', 'Deborah', 19, 'Rue des Belges', '77100', 'Meaux', 'ThomasDeborah@gmail.com', '0172656250');
+
