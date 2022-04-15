@@ -65,7 +65,7 @@ FROM CLIENT;
 
 INSERT INTO CLIENT
 VALUES (1, 'Thompson', 'Alice', 4, 'Cite Dupetit-Thouars', '75003', 'Paris', 'ThompsonAlice@msn.com', '0693283578'),
-(2, 'Martin', 'Sophie', 44, 'Rue d\'Orsel', '75018', 'Paris', 'Sophie45@msn.com', '0146069341'),
+(2, 'Martin', 'Sophie', 44, 'Rue d"Orsel', '75018', 'Paris', 'Sophie45@msn.com', '0146069341'),
 (3, 'White', 'Iona', 43, 'Rue de Levis', '75017', 'Paris', 'WhiteIona@msn.com', '0156790296'),
 (4, 'Robinson', 'Chloe', 61, 'Rue de Vouille', '75003', 'Paris', 'RobinsonChloe@msn.com', '0630496774'),
 (5, 'Moore', 'Lucia', 21, 'Boulevard de Reuilly', '75012', 'Paris', 'MooreLucia@msn.com', '06058406999'),
