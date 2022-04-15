@@ -33,6 +33,7 @@ DROP TABLE PORT CASCADE constraints;
 /* Table : BATEAU_TYPE                                          */
 /*==============================================================*/
 -- Non valide
+
 CREATE TABLE BATEAU_TYPE (
     BTYPE_ID NUMBER(2) NOT NULL constraint CKC_ID_BATEAU_TYPE CHECK (BTYPE_ID >= 1),
     BTYPE_NOM VARCHAR(40) NOT NULL,
@@ -93,9 +94,10 @@ CREATE TABLE PORT (
 /* Table : BATEAU                                               */
 /*==============================================================*/
 -- Non valide
+
 CREATE TABLE BATEAU (
-    BT_IMMATRICULE VARCHAR(8) constraint CKC_BT_NOM_BATEAU CHECK (BT_IMMATRICULE = UPPER(BT_IMMATRICULE)),
-    BT_NOM VARCHAR(30) NOT NULL constraint CKC_BT_NOM_BATEAU CHECK (LEFT(BT_NOM, 1) = UPPER(LEFT(BT_NOM, 1))),
+    BT_IMMATRICULE VARCHAR(8) constraint CKC_BT_IMMA CHECK (BT_IMMATRICULE = UPPER(BT_IMMATRICULE)),
+    BT_NOM VARCHAR(30) NOT NULL constraint CKC_BT_NOM_BATEAU CHECK ( BT_NOM = UPPER(SUBSTR( BT_NOM, 1, 1)) || SUBSTR( BT_NOM, 1, LENGTH(BT_NOM))),
     BT_COULEUR VARCHAR(30) NOT NULL,
     BT_VITESSE_MAX FLOAT(6) NOT NULL constraint CKC_BT_VITESSE_MAX_BATEAU CHECK (
         BT_VITESSE_MAX BETWEEN 1

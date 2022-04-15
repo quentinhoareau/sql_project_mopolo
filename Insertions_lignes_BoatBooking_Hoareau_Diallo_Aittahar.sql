@@ -21,8 +21,8 @@ VALUES (1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10),
 DELETE
 FROM BATEAU;
 
-INSERT INTO BATEAU(MATRICULE,NOM,COULEUR,VITESSE_MAX,LITRE CARBURANT HEURE,TYPE_CARBURANT,MAX_PERSONNE,DESCRIPTION,UTILISABLE,NOTE,LONG,LARG,ANNEE,ETAT)
-VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,NULL,1,NULL,9.75,3.12,1993,'Neuf'); --Marque: Hunter & Type : Moteur 
+INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LONGEUR,BT_ANNEE,BT_ANNEE,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
+VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,NULL,1,NULL,9.75,3.12,1993,'Neuf'), --Marque: Hunter & Type : Moteur 
 ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais'),--Marque: Nicholson & Type : Cabine 
 ('MAX20870','Wauquiez Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf'),--Marque: Wauquiez & Type : Moteur 
 ('TOF75670','Bruce Roberts 36','bleu',100,1,'Essence',2,'La coque en acier Bruce Roberts 36 constitue un choix solide de navire pour la croisière hauturière, l''entraînement à la Moteur ou la croisière côtière. Ceci est vendu comme un projet inachevé en raison de la mauvaise santé du propriétaire actuel. Le propriétaire est ouvert aux offres.',1,NULL,10.97,3.29,1991,'Bon'),--Marque: Bruce Roberts & Type : Moteur 
