@@ -15,15 +15,15 @@ ALTER TABLE
     LOCATION DROP constraint FK_LOCATION_LOCATION_BATEAU;
 
 ALTER TABLE
-    LOCATION DROP constraint FK_LOCATION_LOCATION2_CLIENT;
+    LOCATION DROP constraint FK_LOCATION_LOCATION2_CLIENTELEELE;
 
 DROP TABLE BATEAU CASCADE constraints;
 
 DROP TABLE BATEAU_TYPE CASCADE constraints;
 
-DROP TABLE CLIENT CASCADE constraints;
+DROP TABLE CLIENTELE CASCADE constraints;
 
-DROP TABLE LOCATION CASCADE constraints;
+DROP TABLE RESERVATION CASCADE constraints;
 
 DROP TABLE MARQUE CASCADE constraints;
 
@@ -41,23 +41,23 @@ CREATE TABLE BATEAU_TYPE (
 );
 
 /*==============================================================*/
-/* Table : CLIENT                                               */
+/* Table : CLIENTELE                                               */
 /*==============================================================*/
 -- Non valide
-CREATE TABLE CLIENT (
-    CL_ID NUMBER(4) NOT NULL constraint CKC_CL_ID_CLIENT CHECK (CL_ID >= 1),
-    CL_NOM VARCHAR(30) NOT NULL constraint CKC_CL_NOM_CLIENT CHECK (CL_NOM= UPPER(SUBSTR(CL_NOM, 1, 1)) || SUBSTR(CL_NOM, 2, LENGTH(CL_NOM))),
-    CL_PRENOM VARCHAR(30) NOT NULL constraint CKC_CL_PRENOM_CLIENT CHECK (CL_PRENOM= UPPER(SUBSTR(CL_PRENOM, 1, 1)) || SUBSTR(CL_PRENOM, 2, LENGTH(CL_PRENOM))),
-    CL_ADDR_NUM NUMBER(4) NOT NULL constraint CKC_CL_ADDR_NUM_CLIENT CHECK (CL_ADDR_NUM >= 1),
+CREATE TABLE CLIENTELE (
+    CL_ID NUMBER(4) NOT NULL constraint CKC_CL_ID_CLIENTELE CHECK (CL_ID >= 1),
+    CL_NOM VARCHAR(30) NOT NULL constraint CKC_CL_NOM_CLIENTELE CHECK (CL_NOM= UPPER(SUBSTR(CL_NOM, 1, 1)) || SUBSTR(CL_NOM, 2, LENGTH(CL_NOM))),
+    CL_PRENOM VARCHAR(30) NOT NULL constraint CKC_CL_PRENOM_CLIENTELE CHECK (CL_PRENOM= UPPER(SUBSTR(CL_PRENOM, 1, 1)) || SUBSTR(CL_PRENOM, 2, LENGTH(CL_PRENOM))),
+    CL_ADDR_NUM NUMBER(4) NOT NULL constraint CKC_CL_ADDR_NUM_CLIENTELE CHECK (CL_ADDR_NUM >= 1),
     CL_ADDR_RUE VARCHAR(100) NOT NULL,
-    CL_ADDR_CP VARCHAR(5) NOT NULL constraint CKC_CL_ADDR_CP_SIZE_CLIENT CHECK (length(CL_ADDR_CP) > 4),
-    constraint CKC_CL_ADDR_CP_ONLY_NUMBER_CLIENT CHECK( CL_ADDR_CP not like '%[^0-9]%'),
-    CL_ADDR_VILLE VARCHAR(30) NOT NULL constraint CKC_CL_ADDR_VILLE_CLIENT CHECK (CL_ADDR_VILLE= UPPER(SUBSTR(CL_ADDR_VILLE, 1, 1)) || SUBSTR(CL_ADDR_VILLE, 2, LENGTH(CL_ADDR_VILLE))),
+    CL_ADDR_CP VARCHAR(5) NOT NULL constraint CKC_CL_ADDR_CP_SIZE_CLIENTELE CHECK (length(CL_ADDR_CP) > 4),
+    constraint CKC_CL_ADDR_CP_ONLY_NUMBER_CLIENTELE CHECK( CL_ADDR_CP not like '%[^0-9]%'),
+    CL_ADDR_VILLE VARCHAR(30) NOT NULL constraint CKC_CL_ADDR_VILLE_CLIENTELE CHECK (CL_ADDR_VILLE= UPPER(SUBSTR(CL_ADDR_VILLE, 1, 1)) || SUBSTR(CL_ADDR_VILLE, 2, LENGTH(CL_ADDR_VILLE))),
     CL_EMAIL VARCHAR(100) NOT NULL UNIQUE,
     CL_SECOND_EMAIL VARCHAR(100) UNIQUE,
-    CL_TELEPHONE VARCHAR(10) NOT NULL UNIQUE constraint CKC_CL_TELEPHONE_LENGTH_CLIENT CHECK (length(CL_TELEPHONE) > 9),
-    constraint CKC_CL_TELEPHONE_ONLY_NUMBER_CLIENT CHECK( CL_TELEPHONE not like '%[^0-9]%'),
-    constraint PK_CLIENT primary key (CL_ID)
+    CL_TELEPHONE VARCHAR(10) NOT NULL UNIQUE constraint CKC_CL_TELEPHONE_LENGTH_CLIENTELE CHECK (length(CL_TELEPHONE) > 9),
+    constraint CKC_CL_TELEPHONE_ONLY_NUMBER_CLIENTELE CHECK( CL_TELEPHONE not like '%[^0-9]%'),
+    constraint PK_CLIENTELE primary key (CL_ID)
 );
 
 /*==============================================================*/
@@ -131,10 +131,10 @@ CREATE TABLE BATEAU (
 );
 
 /*==============================================================*/
-/* Table : LOCATION                                             */
+/* Table : RESERVATION                                             */
 /*==============================================================*/
 -- Valide
-CREATE TABLE LOCATION (
+CREATE TABLE RESERVATION (
     CL_ID NUMBER(4) NOT NULL,
     BT_IMMATRICULE VARCHAR(8) NOT NULL,
     LOC_DATE_DEBUT DATE NOT NULL,
@@ -142,5 +142,5 @@ CREATE TABLE LOCATION (
     LOC_NOTE VARCHAR(300),
     constraint PK_LOCATION primary key (CL_ID, BT_IMMATRICULE),
     constraint FK_LOCATION_BATEAU foreign key (BT_IMMATRICULE) references BATEAU (BT_IMMATRICULE),
-    constraint FK_LOCATION_CLIENT foreign key (CL_ID) references CLIENT (CL_ID)
+    constraint FK_LOCATION_CLIENTELE foreign key (CL_ID) references CLIENTELE (CL_ID)
 );
