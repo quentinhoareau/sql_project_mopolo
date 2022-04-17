@@ -75,20 +75,34 @@ VALUES (1, 'COQUE-OPEN', 2000),
 DELETE
 FROM CLIENT;
 
-INSERT INTO CLIENT
-VALUES (1, 'Thompson', 'Alice', 4, 'Cite Dupetit-Thouars', '75003', 'Paris', 'ThompsonAlice@msn.com', '0693283578'),
-(2, 'Martin', 'Sophie', 44, 'Rue d"Orsel', '75018', 'Paris', 'Sophie45@msn.com', '0146069341'),
-(3, 'White', 'Iona', 43, 'Rue de Levis', '75017', 'Paris', 'WhiteIona@msn.com', '0156790296'),
-(4, 'Robinson', 'Chloe', 61, 'Rue de Vouille', '75003', 'Paris', 'RobinsonChloe@msn.com', '0630496774'),
-(5, 'Moore', 'Lucia', 21, 'Boulevard de Reuilly', '75012', 'Paris', 'MooreLucia@msn.com', '06058406999'),
-(6, 'Walker', 'Dale', 101, ' Rue Vieille du Temple', '75008', 'Paris', 'WalkerDale@msn.com', '0142250220'),
-(7, 'Davies', 'Georgina', 48, 'rue de Lille', '91200', 'Île-de-France', 'DaviesGeorgina@gmail.com', '0693211578'),
-(8, 'Brown', 'Nicole', 35, 'Rue Hubert de Lisle', '56100', 'Bretagne', 'BrownNicole@gmail.com', '0229280449'),
-(9, 'Smith', 'Keira', 18, 'Avenue Jules Ferry', '13001', 'MARSEILLE', 'SmithKeira@gmail.com', '0404995975'),
-(10, 'Taylor', 'Haleema', 16, 'Rue de la Mare aux Carats', '93100', 'MONTREUIL', 'TaylorHaleema@msn.com', '0184012419'),
-(11, 'Jones', 'Tanisha', 50, 'Boulevard Amiral Courbet', '94310', 'Orly', 'JonesTanisha@gmail.com', '0139749610'),
-(12, 'Williams', 'Aliyah', 74, 'Boulevard Aristide Briand', '71200', 'Le creusot', 'WilliamsAliyah@hotmail.fr', '0338756253'),
-(13, 'Wilson', 'Willie', 16, 'Rue Jean Vilar', '24100', 'BERGERAC', 'WilsonWillie@msn.com', '0574719417'),
-(14, 'Johnson', 'Aimee', 78, 'Rue Cazade', '91210', 'Draveil', 'JohnsonAimee@gmail.com', '0158134536'),
-(15, 'Thomas', 'Deborah', 19, 'Rue des Belges', '77100', 'Meaux', 'ThomasDeborah@gmail.com', '0172656250');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (1, 'Thompson', 'Alice', 4, 'Cite Dupetit-Thouars', '75003', 'Paris', 'ThompsonAlice@msn.com', '0693283578');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (2, 'Martin', 'Sophie', 44, 'Rue d"Orsel', '75018', 'Paris', 'Sophie45@msn.com', '0146069341');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (3, 'White', 'Iona', 43, 'Rue de Levis', '75017', 'Paris', 'WhiteIona@msn.com', '0156790296');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (4, 'Robinson', 'Chloe', 61, 'Rue de Vouille', '75003', 'Paris', 'RobinsonChloe@msn.com', '0630496774');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (5, 'Moore', 'Lucia', 21, 'Boulevard de Reuilly', '75012', 'Paris', 'MooreLucia@msn.com', '06058406999');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (6, 'Walker', 'Dale', 101, ' Rue Vieille du Temple', '75008', 'Paris', 'WalkerDale@msn.com', '0142250220');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (7, 'Davies', 'Georgina', 48, 'rue de Lille', '91200', 'Île-de-France', 'DaviesGeorgina@gmail.com', '0693211578');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (8, 'Brown', 'Nicole', 35, 'Rue Hubert de Lisle', '56100', 'Bretagne', 'BrownNicole@gmail.com', '0229280449');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (9, 'Smith', 'Keira', 18, 'Avenue Jules Ferry', '13001', 'MARSEILLE', 'SmithKeira@gmail.com', '0404995975');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (10, 'Taylor', 'Haleema', 16, 'Rue de la Mare aux Carats', '93100', 'MONTREUIL', 'TaylorHaleema@msn.com', '0184012419');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (11, 'Jones', 'Tanisha', 50, 'Boulevard Amiral Courbet', '94310', 'Orly', 'JonesTanisha@gmail.com', '0139749610');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (12, 'Williams', 'Aliyah', 74, 'Boulevard Aristide Briand', '71200', 'Le creusot', 'WilliamsAliyah@hotmail.fr', '0338756253');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (13, 'Wilson', 'Willie', 16, 'Rue Jean Vilar', '24100', 'BERGERAC', 'WilsonWillie@msn.com', '0574719417');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (14, 'Johnson', 'Aimee', 78, 'Rue Cazade', '91210', 'Draveil', 'JohnsonAimee@gmail.com', '0158134536');
+INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
+VALUES (15, 'Thomas', 'Deborah', 19, 'Rue des Belges', '77100', 'Meaux', 'ThomasDeborah@gmail.com', '0172656250');
 
