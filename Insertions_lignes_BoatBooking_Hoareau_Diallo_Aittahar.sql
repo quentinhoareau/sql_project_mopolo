@@ -1,20 +1,27 @@
 -- Insertions_lignes_BoatBooking_Hoareau_Diallo_Aittahar.sql
 ----------------TABLE : PORT----------------
 -- INSERT INTO PORT VALUES(prt_id,prt_nom,prt_addr_num,prt_addr_rue,prt_addr_cp,prt_addr_ville,prt_cap_bateau);
-DELETE
-FROM PORT;
-
+DELETE FROM PORT;
 INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
-VALUES (1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10), 
-(2,'Port de Saint-Gilles',3,'Port de St Gilles','97434','Saint-Gilles ',2), 
-(3,'Port de Cap-d’Ail',1,'Av. du Port','06320','Cap-d''Ail',3), 
-(4,'Port Vauban',1,'Av. de Verdun','06600','Antibes',10), 
-(5,'Port Lympia',1430,'Quai Amiral Infernet','06300','Nice',4), 
-(6,'Port Nice Carras',385,'Prom. des Anglais','06200','Nice',3), 
-(7,'Port de la Rague',1,'Port de la Rague','06210','Mandelieu-la-Napoule',3), 
-(8,'Port du Beal',110,'Bd du Midi Louise Moreau','06150','Cannes',5), 
-(9,'Port de Pointe Croisette',1,'Bd de la Croisette','06400','Cannes',4), 
-(10,'Port de Plaisance de Pornichet',1,'Port de Plaisance','44380','Pornichet',2);
+   VALUES (1,'Port de Toulon',13,'Rue Victor Micholet','83000','Toulon',10);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (2,'Port de Saint-Gilles',3,'Port de St Gilles','97434','Saint-Gilles ',2);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (3,'Port de Cap-d’Ail',1,'Av. du Port','06320','Cap-d''Ail',3);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (4,'Port Vauban',1,'Av. de Verdun','06600','Antibes',10);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (5,'Port Lympia',1430,'Quai Amiral Infernet','06300','Nice',4);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (6,'Port Nice Carras',385,'Prom. des Anglais','06200','Nice',3);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (7,'Port de la Rague',1,'Port de la Rague','06210','Mandelieu-la-Napoule',3);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (8,'Port du Beal',110,'Bd du Midi Louise Moreau','06150','Cannes',5);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (9,'Port de Pointe Croisette',1,'Bd de la Croisette','06400','Cannes',4);
+INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_VILLE,PRT_CAP_BATEAU)
+   VALUES (10,'Port de Plaisance de Pornichet',1,'Port de Plaisance','44380','Pornichet',2);
 
 ----------------TABLE : BATEAU----------------
 DELETE FROM BATEAU;
@@ -57,8 +64,7 @@ VALUES (2,'Boston-Whaler','Boston-Whaler','Que vous soyez en train de pêcher, d
 
 
 ----------------TABLE : BATEAU_TYPE----------------
-DELETE
-FROM BATEAU_TYPE;
+DELETE FROM BATEAU_TYPE;
 
 INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
 VALUES (1, 'COQUE-OPEN', 2000), 
@@ -72,8 +78,7 @@ VALUES (1, 'COQUE-OPEN', 2000),
 
 
 ----------------TABLE : CLIENT----------------
-DELETE
-FROM CLIENT;
+DELETE FROM CLIENT;
 
 INSERT INTO CLIENT(CL_ID,CL_NOM,CL_PRENOM,CL_ADDR_NUM,CL_ADDR_RUE,CL_ADDR_CP,CL_ADDR_VILLE,CL_EMAIL,CL_TELEPHONE)
 VALUES (1, 'Thompson', 'Alice', 4, 'Cite Dupetit-Thouars', '75003', 'Paris', 'ThompsonAlice@msn.com', '0693283578');
