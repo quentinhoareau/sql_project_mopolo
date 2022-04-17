@@ -32,18 +32,18 @@ DROP TABLE PORT CASCADE constraints;
 /*==============================================================*/
 /* Table : BATEAU_TYPE                                          */
 /*==============================================================*/
--- Non valide
+-- Valide
 CREATE TABLE BATEAU_TYPE (
     BTYPE_ID NUMBER(2) NOT NULL constraint CKC_ID_BATEAU_TYPE CHECK (BTYPE_ID >= 1),
     BTYPE_NOM VARCHAR(40) NOT NULL,
-    BTYPE_PRIX_HEURE FLOAT(3,2) NOT NULL constraint ckc_btype_prix CHECK (BTYPE_PRIX_HEURE > 0),
+    BTYPE_PRIX_HEURE NUMBER(3,2) NOT NULL constraint ckc_btype_prix CHECK (BTYPE_PRIX_HEURE > 0),
     constraint PK_BATEAU_TYPE primary key (BTYPE_ID)
 );
 
 /*==============================================================*/
 /* Table : CLIENTELE                                               */
 /*==============================================================*/
--- Non valide
+-- Valide
 CREATE TABLE CLIENTELE (
     CL_ID NUMBER(4) NOT NULL constraint CKC_CL_ID_CLIENTELE CHECK (CL_ID >= 1),
     CL_NOM VARCHAR(30) NOT NULL constraint CKC_CL_NOM_CLIENTELE CHECK (CL_NOM= UPPER(SUBSTR(CL_NOM, 1, 1)) || SUBSTR(CL_NOM, 2, LENGTH(CL_NOM))),
@@ -63,13 +63,13 @@ CREATE TABLE CLIENTELE (
 /*==============================================================*/
 /* Table : MARQUE                                               */
 /*==============================================================*/
--- Non valide
+-- Valide
 CREATE TABLE MARQUE (
     MRQ_ID NUMBER(4) NOT NULL CONSTRAINT CKC_ID CHECK(MRQ_ID > 0),
     MRQ_NOM VARCHAR(50) NOT NULL,
     MRQ_FABRICANT VARCHAR(50) NOT NULL,
     MRQ_DESC VARCHAR(1000),
-    MRQ_COEFF_MAJORATION FLOAT(1,2) NOT NULL constraint CKC_MRQ_COEFF_MAJORAT_MARQUE CHECK (
+    MRQ_COEFF_MAJORATION NUMBER(1,2) NOT NULL constraint CKC_MRQ_COEFF_MAJORAT_MARQUE CHECK (
         MRQ_COEFF_MAJORATION BETWEEN 0
         AND 1
     ),
@@ -101,11 +101,11 @@ CREATE TABLE BATEAU (
         BT_NOM = UPPER(SUBSTR(BT_NOM, 1, 1)) || SUBSTR(BT_NOM, 2, LENGTH(BT_NOM))
     ),
     BT_COULEUR VARCHAR(30) NOT NULL,
-    BT_VITESSE_MAX FLOAT(4,2) NOT NULL constraint CKC_BT_VITESSE_MAX_BATEAU CHECK (
+    BT_VITESSE_MAX NUMBER(4,2) NOT NULL constraint CKC_BT_VITESSE_MAX_BATEAU CHECK (
         BT_VITESSE_MAX BETWEEN 1
         AND 600
     ),
-    BT_LITRE_CARBURANT_HEURE FLOAT(4,2) NOT NULL constraint CKC_BT_LITRE_CARBURAN_BATEAU CHECK (BT_LITRE_CARBURANT_HEURE > 0),
+    BT_LITRE_CARBURANT_HEURE NUMBER(4,2) NOT NULL constraint CKC_BT_LITRE_CARBURAN_BATEAU CHECK (BT_LITRE_CARBURANT_HEURE > 0),
     BT_TYPE_CARBURANT VARCHAR(7) DEFAULT 'Diesel' NOT NULL constraint CKC_BT_TYPE_CARBURANT_BATEAU CHECK (BT_TYPE_CARBURANT IN ('Diesel', 'Essence')),
     BT_MAX_PERSONNE NUMBER(2) DEFAULT 1 NOT NULL constraint CKC_BT_MAX_PERSONNE_BATEAU CHECK (BT_MAX_PERSONNE >= 1),
     BT_DESCRIPTION VARCHAR(300),
@@ -115,8 +115,8 @@ CREATE TABLE BATEAU (
         AND BT_UTILISABLE IN (0, 1)
     ),
     BT_NOTE VARCHAR(300),
-    BT_LONGUEUR FLOAT(3,2) constraint CKC_BT_LONGUEUR_BATEAU CHECK ((BT_LONGUEUR >= 1)),
-    BT_LARGEUR FLOAT(3,2) constraint CKC_BT_LARGEUR_BATEAU CHECK (BT_LARGEUR >= 1),
+    BT_LONGUEUR NUMBER(3,2) constraint CKC_BT_LONGUEUR_BATEAU CHECK ((BT_LONGUEUR >= 1)),
+    BT_LARGEUR NUMBER(3,2) constraint CKC_BT_LARGEUR_BATEAU CHECK (BT_LARGEUR >= 1),
     BT_ANNEE NUMBER(4),
     BT_ETAT VARCHAR(7) DEFAULT 'Neuf' NOT NULL constraint CKC_BT_ETAT_BATEAU CHECK (BT_ETAT IN ('Neuf', 'Bon', 'Mauvais')),
     MRQ_ID NUMBER(4) NOT NULL,
