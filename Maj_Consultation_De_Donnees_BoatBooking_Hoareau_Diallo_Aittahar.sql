@@ -84,6 +84,13 @@ SELECT ...
 FROM ...
 WHERE ...
 
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+
+
+
 ----------------UPDATE - 2 requêtes impliquant 1 table----------------
 
 -- Req 1 - Jean veut corriger son prénom, il s'est trompé, il a enregistré Aimee à la place de son prénom
@@ -101,9 +108,9 @@ WHERE ...
 ----------------Requêtes MAJ - 2 requêtes impliquant 1 table----------------
 
 -- Req 1 - Jean veut corriger son prénom, il s'est trompé, il a enregistré Aimee à la place de son prénom
-UPDATE CLIENT
-SET CL_PRENOM = 'Jean'
-WHERE CL_PRENOM = 'Aimee' and CL_NOM = 'Johnson';
+SELECT ...
+FROM ...
+WHERE ...
 
 -- Req 2 - [Description de la requete...]
 UPDATE ...
