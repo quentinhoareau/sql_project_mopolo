@@ -94,7 +94,7 @@ WHERE ...
 ----------------UPDATE - 2 requêtes impliquant 1 table----------------
 
 -- Req 1 - Jean veut corriger son prénom, il s'est trompé, il a enregistré Aimee à la place de son prénom
-UPDATE CLIENT
+UPDATE CLIENTELE
 SET CL_PRENOM = 'Jean'
 WHERE CL_PRENOM = 'Aimee' and CL_NOM = 'Johnson';
 
