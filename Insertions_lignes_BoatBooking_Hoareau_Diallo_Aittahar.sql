@@ -58,8 +58,8 @@ INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(14, 'Grand-banks', 'Grand-banks', 'Grand-Banks est un constructeur de bateaux de croisière depuis près de 70 ans. Les Bateaux Grand-Banks sont de superbes yachts aux designs classiques et modernes avec un confort et d’excellentes performances sur les mers et océans.', 0.85);
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(15,'Sea-Ray', 'Sea-Ray', 'Les bateaux Sea-Ray sont construits par un processus artisanal méticuleux. Le design inspiré est un avantage considérable avec des performances inégalées. Des revendeurs de bateaux Sea-Ray sont présents dans plus de 80 pays.', 0.65);
--- Ajouter l'id 16 : 'Bruce Roberts'
--- Ajouter l'id 17 : 'Nautic Saintonge'
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(16, 'Brue Roberts', 'Bruce Roberts', 'Bateau des chantiers Bruce Roberts en acier, bateau de grand voyage très robuste,Plus de 100 exemples de ce modèle peuvent être trouvés en croisière dans différentes parties du monde. Spécialement conçu pour la construction en acier Multi Chine uniquement. De nombreux Spray 38 sont décrits dans le livre de Bruce Spray. Le bateau de croisière ultime. Gréement aurique, un bateau qui a fait ses preuves partout dans le monde.', 0.45);
 
 
 ----------------TABLE : BATEAU_TYPE----------------
