@@ -30,7 +30,8 @@ DELETE FROM MARQUE;
 
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES (1,'Boston-Whaler','Boston-Whaler','Que vous soyez en train de pêcher, de naviguer ou les deux, les bateaux Boston-Whaler vous offrent des expériences et un confort de première qualité. Ils sont fabriqués avec une conception intelligente, une construction de haute qualité et une technologie d''avant-garde',0.90);
-INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION) VALUES(2, 'Rhéa', 'Rhéa', 'Le chantier Rhéa Marine a été Créé en 1996 à La Rochelle. Cette marque se spécialise dans la fabrication de bateaux de plaisance à moteur. ', 0.50)
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION);
 VALUES(3,'ZODAC','ZODAC','ZODAC est un constructeur français spécialisé dans les bateaux pneumatiques. Il est l’expert et pionnier dans l’exploration de l’air et de l’eau. Les bateaux Zodiac se caractérisent par une innovation constante dans les matériaux utilisés, avec des semi-rigides solides et légers à la fois ce qui augmente la longévité de chaque unité fabriquée',0.85);
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(4,'Quicksilver','Quicksilver','Quicksilver fait partie du groupe Brunswick Corporation. Quicksilver est connu pour ses gammes de bateaux qui allient avec aisance fonctionnalité et sécurité le tout dans un style unique. Ce sont des bateaux dont la coque en V permet de fendre aisément les mers avec tout le confort nécessaire sur un bateau',0.80);
