@@ -58,6 +58,8 @@ INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(14, 'Grand-banks', 'Grand-banks', 'Grand-Banks est un constructeur de bateaux de croisière depuis près de 70 ans. Les Bateaux Grand-Banks sont de superbes yachts aux designs classiques et modernes avec un confort et d’excellentes performances sur les mers et océans.', 0.85);
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(15,'Sea-Ray', 'Sea-Ray', 'Les bateaux Sea-Ray sont construits par un processus artisanal méticuleux. Le design inspiré est un avantage considérable avec des performances inégalées. Des revendeurs de bateaux Sea-Ray sont présents dans plus de 80 pays.', 0.65);
+-- Ajouter l'id 16 : 'Bruce Roberts'
+-- Ajouter l'id 17 : 'Nautic Saintonge'
 
 
 ----------------TABLE : BATEAU_TYPE----------------
@@ -99,29 +101,29 @@ VALUES(15, 'YACHTS', 5000);
 DELETE FROM BATEAU;
 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,1,9.75,3.12,1993,'Neuf',1,1,1,1); --Marque: Hunter & Type : Moteur 
+   VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,1,9.75,3.12,1993,'Neuf',8,1,1,1); --Marque: Hunter & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais',1,1,1,2);--Marque: Nicholson & Type : Cabine 
+   VALUES ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais',10,1,1,2);--Marque: Nicholson & Type : Cabine 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAX20870','Wauquiez Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf',1,1,1,3);--Marque: Wauquiez & Type : Moteur 
+   VALUES ('MAX20870','Westerly Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf',9,1,1,3);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOF75670','Bruce Roberts 36','bleu',100,1,'Essence',2,'La coque en acier Bruce Roberts 36 constitue un choix solide de navire pour la croisière hauturière, l''entraînement à la Moteur ou la croisière côtière. Ceci est vendu comme un projet inachevé en raison de la mauvaise santé du propriétaire actuel. Le propriétaire est ouvert aux offres.',1,NULL,10.97,3.29,1991,'Bon',1,1,1,4);--Marque: Bruce Roberts & Type : Moteur 
+   VALUES ('TOF75670','Bruce Roberts 36','bleu',100,1,'Essence',2,'La coque en acier Bruce Roberts 36 constitue un choix solide de navire pour la croisière hauturière, l''entraînement à la Moteur ou la croisière côtière. Ceci est vendu comme un projet inachevé en raison de la mauvaise santé du propriétaire actuel. Le propriétaire est ouvert aux offres.',1,NULL,10.97,3.29,1991,'Bon',16,1,1,4);--Marque: Bruce Roberts & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOF50658','Moody 31','blanc',70,0.4,'Essence',5,'Le Moody 31 est un petit croiseur familial bien construit qui a bien résisté à l''épreuve du temps. Un design moderne et actuel avec de grandes performances et un excellent logement, ils sont faciles à manipuler et amusants à naviguer.',1,NULL,9.45,3.3,1986,'Bon',1,1,1,5);--Marque: Moody & Type : Moteur 
+   VALUES ('TOF50658','Moody 31','blanc',70,0.4,'Essence',5,'Le Moody 31 est un petit croiseur familial bien construit qui a bien résisté à l''épreuve du temps. Un design moderne et actuel avec de grandes performances et un excellent logement, ils sont faciles à manipuler et amusants à naviguer.',1,NULL,9.45,3.3,1986,'Bon',11,1,1,5);--Marque: Moody & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF97643','Westerly Fulmar','rouge',112,0.6,'Essence',4,'Ce Westerly Fulmar de 1982 est une version à quille de ce croiseur familial populaire et durable, idéal pour naviguer dans les eaux de la côte Est/Kent et au-delà. Solidement construit et bien fini par Westerly Marine avec un intérieur conventionnel spacieux.',1,NULL,9.7,3.33,1982,'Neuf',1,1,1,6);--Marque: Westerly & Type : Moteur 
+   VALUES ('RUF97643','Westerly Fulmar','rouge',112,0.6,'Essence',4,'Ce Westerly Fulmar de 1982 est une version à quille de ce croiseur familial populaire et durable, idéal pour naviguer dans les eaux de la côte Est/Kent et au-delà. Solidement construit et bien fini par Westerly Marine avec un intérieur conventionnel spacieux.',1,NULL,9.7,3.33,1982,'Neuf',9,1,1,6);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF39495','Westerly Berwick','bleu',100,0.55,'Essence',5,1,9.14,3.05,1976,'Neuf',1,1,1,7);--Marque: Westerly & Type : Moteur 
+   VALUES ('RUF39495','Westerly Berwick','bleu',100,0.55,'Essence',5,1,9.14,3.05,1976,'Neuf',9,1,1,7);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUB74290','Nicholson 32','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',1,1,1,8);--Marque: Nicholson & Type : Moteur 
+   VALUES ('RUB74290','Nicholson 32','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,1,1,8);--Marque: Nicholson & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAF68208','Hunter Delta 25','vert',60,0.45,'Diesel',5,1,7.45,2.74,1980,'Neuf',1,1,1,9);--Marque: Hunter & Type : Moteur 
+   VALUES ('MAF68208','Hunter Delta 25','vert',60,0.45,'Diesel',5,1,7.45,2.74,1980,'Neuf',8,1,1,9);--Marque: Hunter & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF37023','Hunter Legend 26','bleu',70,0.67,'Diesel',4,1,7.92,2.74,1996,'Bon',1,1,1,10);--Marque: Hunter & Type : courses 
+   VALUES ('RUF37023','Hunter Legend 26','bleu',70,0.67,'Diesel',4,1,7.92,2.74,1996,'Bon',8,1,1,10);--Marque: Hunter & Type : courses 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOR53026','Nautic Saintonge NS 44','blanc',97,0.98,'Diesel',6,1,13.4,4.2,1979,'Bon',1,1,1,11);--Marque: Nautic Saintonge & Type : Moteur 
+   VALUES ('TOR53026','Nautic Saintonge NS 44','blanc',97,0.98,'Diesel',6,1,13.4,4.2,1979,'Bon',17,1,1,11);--Marque: Nautic Saintonge & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOW49765','Moody S38','jaune',105,0.77,'Essence',6,'Si vous souhaitez goûter à la légendaire marque Moody et que vous Si vous aimez un yacht de luxe solide pour vous emmener, vous et votre famille, sur des croisières côtières ou longue distance, alors nous vous recommandons d''y jeter un coup d''œil',1,NULL,11.89,3.95,1996,'Neuf',1,1,1,12);--Marque: Moody & Type : Moteur
+   VALUES ('TOW49765','Moody S38','jaune',105,0.77,'Essence',6,'Si vous souhaitez goûter à la légendaire marque Moody et que vous Si vous aimez un yacht de luxe solide pour vous emmener, vous et votre famille, sur des croisières côtières ou longue distance, alors nous vous recommandons d''y jeter un coup d''œil',1,NULL,11.89,3.95,1996,'Neuf',11,1,1,12);--Marque: Moody & Type : Moteur
 
 
 ----------------TABLE : CLIENTELE----------------
