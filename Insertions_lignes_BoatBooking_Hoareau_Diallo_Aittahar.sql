@@ -57,10 +57,32 @@ DELETE FROM MARQUE;
 
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES (2,'Boston-Whaler','Boston-Whaler','Que vous soyez en train de pêcher, de naviguer ou les deux, les bateaux Boston-Whaler vous offrent des expériences et un confort de première qualité. Ils sont fabriqués avec une conception intelligente, une construction de haute qualité et une technologie d''avant-garde',0.90), 
-(3,'ZODAC','ZODAC','ZODAC est un constructeur français spécialisé dans les bateaux pneumatiques. Il est l’expert et pionnier dans l’exploration de l’air et de l’eau. Les bateaux Zodiac se caractérisent par une innovation constante dans les matériaux utilisés, avec des semi-rigides solides et légers à la fois ce qui augmente la longévité de chaque unité fabriquée',0.85), 
-(4,'Quicksilver','Quicksilver','Quicksilver fait partie du groupe Brunswick Corporation. Quicksilver est connu pour ses gammes de bateaux qui allient avec aisance fonctionnalité et sécurité le tout dans un style unique. Ce sont des bateaux dont la coque en V permet de fendre aisément les mers avec tout le confort nécessaire sur un bateau',0.80), 
-(5,'Bayliner','Bayliner','Bayliner a été fondée en 1957 par Orin Edson, il compte actuellement plus de 400 concessionnaires dans plus de 60 pays à travers le monde. La marque Bayliner a pour caractéristique principale la variété des coques de ses bateaux et la polyvalence de chaque modèle',0.75), 
-(6,'Bénéteau','Bénéteau','Les principales caractéristiques du chantier Bénéteau sont l’innovation, le design et la simplicité. C’est une marque pleine charme et de style qui vous offre un large éventail de gammes pour tous styles de navigation, que ce soit dans la plaisance ou dans les courses professionnelles',0.70);
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(3,'ZODAC','ZODAC','ZODAC est un constructeur français spécialisé dans les bateaux pneumatiques. Il est l’expert et pionnier dans l’exploration de l’air et de l’eau. Les bateaux Zodiac se caractérisent par une innovation constante dans les matériaux utilisés, avec des semi-rigides solides et légers à la fois ce qui augmente la longévité de chaque unité fabriquée',0.85), 
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(4,'Quicksilver','Quicksilver','Quicksilver fait partie du groupe Brunswick Corporation. Quicksilver est connu pour ses gammes de bateaux qui allient avec aisance fonctionnalité et sécurité le tout dans un style unique. Ce sont des bateaux dont la coque en V permet de fendre aisément les mers avec tout le confort nécessaire sur un bateau',0.80), 
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(5,'Bayliner','Bayliner','Bayliner a été fondée en 1957 par Orin Edson, il compte actuellement plus de 400 concessionnaires dans plus de 60 pays à travers le monde. La marque Bayliner a pour caractéristique principale la variété des coques de ses bateaux et la polyvalence de chaque modèle',0.75), 
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(6,'Bénéteau','Bénéteau','Les principales caractéristiques du chantier Bénéteau sont l’innovation, le design et la simplicité. C’est une marque pleine charme et de style qui vous offre un large éventail de gammes pour tous styles de navigation, que ce soit dans la plaisance ou dans les courses professionnelles',0.70),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(7, 'Nautic Saintonge', 'Nautic Saintonge', 'Le voilier NS 44 est un monocoque habitable de croisière, construit par le chantier Nautic Saintonge. Ce voilier, réalisé par l''architecte naval Georges Auzépy-Brenneur, mesure 13.37 m de long. La production a démarré en 1976 et s''est terminée en 1983. 33 exemplaires du bateau ont été produits', 0.75),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(8, 'Hunter', 'Hunter', 'Le voilier Hunter 40 est un monocoque habitable de croisière, construit par le chantier Hunter Marine. Ce voilier Quille fixe, gréé en Sloop fractionné, réalisé par l''architecte naval Hunter Design, mesure 12.57 m de long avec un tirant d''eau maximum de 2.03 m. La production a démarré en 2013',0.65),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(9, 'Westerly', 'Westerly', 'Le voilier Westerly Corsair 36 est un monocoque habitable de croisière, construit par le chantier Westerly Marine. Ce voilier Quille fixe, gréé en Sloop en tête, réalisé par l''architecte naval Dubois Naval Architects, mesure 10.87 m de long. La production a démarré en 1983 et s''est terminée en 1986', 0.90),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(10, 'Nicholson', 'Nicholson', 'Le voilier Nicholson 32 est un monocoque habitable de croisière, construit par le chantier Halatic en Royaume-Uni. Ce voilier Quille fixe, gréé en Sloop en tête, réalisé par l''architecte naval Peter Nicholson avec un tirant d''eau maximum de 1.68 m. La production a démarré en 1962 et s''est terminée en 1981', 0.50),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(11, 'Moody', 'Moody', 'L''intérieur, lumineux et chaleureux, est simple, fonctionnel, à l''instar du plan de pont, qui permet un confort de manœuvre, une circulation aisée et un accès à la mer facilité par une plage de bain de belle dimension. La gamme DS (Deck Saloon), comprend 3 modèles: Moody 45 DS, Moody 41 DS et Moody 54 DS', 0.75),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(12, 'Pricess', 'Princess', 'es Yachts du constructeur britannique sont des modèles construits au détails près. Princess Yacht vous offre des bateaux de luxe et de classe supérieur. Le design et les détails sont les caractéristiques principales de chaque bateau ainsi que le confort à l’intérieur comme sur chaque pont des bateaux.', 0.60),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(13, 'Alubat', 'Alubat', 'Le constructeur Alubat est un expert des voiliers et dériveurs en aluminium de voyages.  Il assure sécurité, fiabilité doublé à l’écologie. Vous découvrirez de belles unités dans les gammes comme Ovni, Cigale et Ovnicat pour les passionnés de la voile.', 0.90),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(14, 'Grand-banks', 'Grand-banks', 'Grand-Banks est un constructeur de bateaux de croisière depuis près de 70 ans. Les Bateaux Grand-Banks sont de superbes yachts aux designs classiques et modernes avec un confort et d’excellentes performances sur les mers et océans.', 0.85),
+INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
+VALUES(15,'Sea-Ray', 'Sea-Ray', 'Les bateaux Sea-Ray sont construits par un processus artisanal méticuleux. Le design inspiré est un avantage considérable avec des performances inégalées. Des revendeurs de bateaux Sea-Ray sont présents dans plus de 80 pays.' 0.65);
 
 
 ----------------TABLE : BATEAU_TYPE----------------
@@ -68,13 +90,34 @@ DELETE FROM BATEAU_TYPE;
 
 INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
 VALUES (1, 'COQUE-OPEN', 2000), 
-(2, 'CABINE', 1500), 
-(3, 'SEMI-RIGIDE', 1000), 
-(4, 'COURSE', 700), 
-(5, 'SPORTS NAUTIQUE', 500), 
-(6, 'JET-SKI', 50), 
-(7, 'VOILIER', 200), 
-(8, 'LUXE', 3500);
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(2, 'CABINE', 1500), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(3, 'SEMI-RIGIDE', 1000), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(4, 'COURSE', 700), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(5, 'SPORTS NAUTIQUE', 500), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(6, 'JET-SKI', 50), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(7, 'VOILIER', 200), 
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(8, 'LUXE', 3500),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(9, 'GONFLABLES', 150),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(10, 'RUNQBOUTS', 1500),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(11, 'HAUTES PERFORMANCES', 2000),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(12, 'DINGHIES'. 500),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(13, 'DAY-CRUISERS', 1000),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(14, 'PECHE SPORTIVE', 2000),
+INSERT INTO BATEAU_TYPE(BTYPE_ID,BTYPE_NOM,BTYPE_PRIX_HEURE)
+VALUES(15, 'YACHTS', 5000);
 
 
 ----------------TABLE : CLIENTELE----------------
