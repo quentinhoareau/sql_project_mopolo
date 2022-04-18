@@ -23,9 +23,9 @@ FROM RESERVATION
 GROUP BY BT_IMMATRICULE;
 
 -- Req 5 -  Tous les bateaux qui consomme du 'Diesel' en carburant
-SELECT *
-FROM ...
-WHERE ...
+SELECT BT_IMMATRICULE, BT_TYPE_CARBURANT
+FROM BATEAU
+WHERE BT_TYPE_CARBURANT = 'Diesel'
 
 
 ----------------CONSULTATION - 5 requêtes impliquant 2 tables avec jointures internes dont 1 externe + 1 group by + 1 tri----------------
@@ -46,14 +46,16 @@ FROM ...
 WHERE ...
 
 -- Req 4 -  Nombres de réservation par ville de client depuis toujours  (Req avec Group By)
-SELECT ... 
-FROM ...
-WHERE ...
+SELECT cli.CL_ADDR_VILLE, COUNT(res.CL_ID) "Nb de réservation"
+FROM RESERVATION res
+RIGHT JOIN CLIENTELE cli ON cli.CL_ID = res.CL_ID
+GROUP BY cli.CL_ADDR_VILLE;
 
--- Req 5 -  Tous les bateaux qui sont utilisable sur les port situé à Nice
-SELECT ... 
-FROM ...
-WHERE ...
+-- Req 5 -  Tous les bateaux qui sont utilisable sur les ports situé à Nice
+SELECT bat.BT_IMMATRICULE, bat.BT_NOM, prt.prt_addr_ville
+FROM BATEAU bat
+INNER JOIN PORT prt ON prt.PRT_ID = bat.PRT_ID
+WHERE prt.prt_addr_ville = 'Nice';
 
 
 ----------------CONSULTATION - 5 requêtes impliquant 3 tables (ou +) avec jointures internes dont 1 externe + 1 group by + 1 tri ----------------
@@ -78,10 +80,22 @@ SELECT ...
 FROM ...
 WHERE ...
 
--- Req 5 -  La dernière marque de bateaux réservé pour tous les clients (Req avec 1 jointure externe)
-SELECT ...
-FROM ...
-WHERE ...
+-- Req 5 -  La dernière marque de bateaux réservé ou pas pour tous les clients (Req avec 1 jointure externe)
+SELECT c.CL_ID, c.CL_NOM, c.CL_PRENOM,r.BT_IMMATRICULE "Dernier imma. bateau loué", mrq.mrq_nom "Dernière marque louée"
+FROM CLIENTELE c
+LEFT JOIN RESERVATION r ON c.CL_ID = r.CL_ID
+INNER JOIN BATEAU bat ON bat.BT_IMMATRICULE = r.BT_IMMATRICULE
+INNER JOIN MARQUE mrq ON mrq.MRQ_ID = bat.MRQ_ID
+WHERE r.BT_IMMATRICULE = (
+    SELECT BT_IMMATRICULE 
+    FROM RESERVATION r2
+    WHERE r2.RES_DATE_DEBUT = (
+        SELECT MAX(r3.RES_DATE_DEBUT) FROM RESERVATION r3 WHERE r3.CL_ID = c.CL_ID
+    )
+    AND  r2.CL_ID = c.CL_ID
+) OR r.BT_IMMATRICULE IS NULL 
+ORDER BY c.CL_ID;
+
 
 
 ------------------------------------------------------------------------------------
