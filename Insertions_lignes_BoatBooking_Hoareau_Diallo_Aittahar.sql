@@ -29,7 +29,7 @@ INSERT INTO PORT(PRT_ID,PRT_NOM,PRT_ADDR_NUM,PRT_ADDR_RUE,PRT_ADDR_CP,PRT_ADDR_V
 DELETE FROM MARQUE;
 
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
-VALUES (2,'Boston-Whaler','Boston-Whaler','Que vous soyez en train de pêcher, de naviguer ou les deux, les bateaux Boston-Whaler vous offrent des expériences et un confort de première qualité. Ils sont fabriqués avec une conception intelligente, une construction de haute qualité et une technologie d''avant-garde',0.90);
+VALUES (1,'Boston-Whaler','Boston-Whaler','Que vous soyez en train de pêcher, de naviguer ou les deux, les bateaux Boston-Whaler vous offrent des expériences et un confort de première qualité. Ils sont fabriqués avec une conception intelligente, une construction de haute qualité et une technologie d''avant-garde',0.90);
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
 VALUES(3,'ZODAC','ZODAC','ZODAC est un constructeur français spécialisé dans les bateaux pneumatiques. Il est l’expert et pionnier dans l’exploration de l’air et de l’eau. Les bateaux Zodiac se caractérisent par une innovation constante dans les matériaux utilisés, avec des semi-rigides solides et légers à la fois ce qui augmente la longévité de chaque unité fabriquée',0.85);
 INSERT INTO MARQUE(MRQ_ID,MRQ_NOM,MRQ_FABRICANT,MRQ_DESC,MRQ_COEFF_MAJORATION)
