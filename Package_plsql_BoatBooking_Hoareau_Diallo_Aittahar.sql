@@ -24,7 +24,7 @@ END BATEAU_PACKAGE;
 /
 
 CREATE OR REPLACE PACKAGE BODY BATEAU_PACKAGE AS 
-   PROCEDURE ajouterBateau(...) 
+   PROCEDURE ajouterBateau(...) x
    IS 
    BEGIN 
       ...
@@ -120,7 +120,6 @@ CREATE OR REPLACE TRIGGER RESERVATION_CHECK
     FOR EACH ROW
     DECLARE
         nbResByDates number(2);
-        
     BEGIN
         SELECT COUNT(*) INTO nbResByDates FROM RESERVATION
         WHERE (( RES_DATE_DEBUT BETWEEN :NEW.RES_DATE_DEBUT AND :NEW.RES_DATE_FIN)
@@ -135,7 +134,7 @@ CREATE OR REPLACE TRIGGER RESERVATION_CHECK
 /
 
 -- Tester le trigger :
--- Description : Le client 2 ne pourra paz réserver sur la périoide indiqué (req 2) car il impacte sur les dates du client 1 (req 1), une erreur sera déclanchée
+-- Description : Le client 2 ne pourra pas réserver sur la périoide indiqué (req 2) car il impacte sur les dates du client 1 (req 1), une erreur sera déclanchée
 INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(1,'TOR53026',TO_DATE('2025-03-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2025-03-15 17:00:00','yyyy-mm-dd hh24:mi:ss'));
 INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
