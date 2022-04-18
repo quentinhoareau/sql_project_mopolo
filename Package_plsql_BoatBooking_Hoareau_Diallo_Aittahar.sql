@@ -115,7 +115,25 @@ END BATEAU_PACKAGE;
 /* [Description...]                                   
 /*==============================================================*/
 --Création du trigger
-...
+CREATE OR REPLACE TRIGGER RESERVATION_CHECK
+    BEFORE INSERT OR UPDATE ON RESERVATION
+    FOR EACH ROW
+    DECLARE
+        nbResByDates number(2);
+        
+    BEGIN
+        SELECT COUNT(*) INTO nbResByDates FROM RESERVATION
+        WHERE (( RES_DATE_DEBUT BETWEEN :NEW.RES_DATE_DEBUT AND :NEW.RES_DATE_FIN)
+        OR ( RES_DATE_FIN BETWEEN :NEW.RES_DATE_DEBUT AND :NEW.RES_DATE_FIN))
+        AND BT_IMMATRICULE = :NEW.BT_IMMATRICULE;
+       
+       IF nbResByDates >= 1 THEN 
+            RAISE_APPLICATION_ERROR(-20001,'Impossible de réserver sur ce crénaux pour le BATEAU : "'||:NEW.BT_IMMATRICULE||'" car une autre réservation est déjà programmée sur les mêmes dates.');
+       END IF;
+       
+    END;
+/
+
 
 --Utilisation du trigger
 ...
