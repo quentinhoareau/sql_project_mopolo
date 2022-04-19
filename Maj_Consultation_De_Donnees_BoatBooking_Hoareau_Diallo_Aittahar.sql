@@ -120,10 +120,10 @@ WHERE ...
 
 ----------------Requêtes MAJ - 2 requêtes impliquant 2 tables----------------
 
--- Req 1 - [Description de la requete...]
-UPDATE ...
-SET ...
-WHERE ...
+-- Req 1 - On souhaite mettre tous les bateaux situé au port 'Port Nice Carras' non utilisale car ce port est en réparation.
+UPDATE BATEAU
+SET BT_UTILISABLE = 0
+WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = 'Port Nice Carras' );
 
 -- Req 2 - [Description de la requete...]
 UPDATE ...
@@ -132,10 +132,15 @@ WHERE ...
 
 ----------------Requêtes MAJ - 2 requêtes impliquant plus de 2 tables----------------
 
--- Req 1 - [Description de la requete...]
-UPDATE ...
-SET ...
-WHERE ...
+-- Req 1 - Supprimer tous les réservations des bateaux situé sur le port de Toulon 
+DELETE
+FROM RESERVATION
+WHERE BT_IMMATRICULE IN (
+    SELECT bat.BT_IMMATRICULE 
+    FROM BATEAU bat
+    INNER JOIN PORT prt ON prt.PRT_ID = bat.PRT_ID
+    WHERE prt.prt_addr_ville = 'Toulon'
+);
 
 -- Req 2 - [Description de la requete...]
 UPDATE ...
