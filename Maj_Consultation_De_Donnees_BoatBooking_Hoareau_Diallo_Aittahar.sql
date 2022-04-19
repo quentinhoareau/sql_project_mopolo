@@ -120,7 +120,7 @@ WHERE ...
 
 ----------------Requêtes MAJ - 2 requêtes impliquant 2 tables----------------
 
--- Req 1 - On souhaite mettre tous les bateaux situé au port 'Port Nice Carras' non utilisale car ce port est en réparation.
+-- Req 1 - On souhaite mettre tous les bateaux situé au port 'Port Nice Carras' non utilisable car ce port est en réparation.
 UPDATE BATEAU
 SET BT_UTILISABLE = 0
 WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = 'Port Nice Carras' );
