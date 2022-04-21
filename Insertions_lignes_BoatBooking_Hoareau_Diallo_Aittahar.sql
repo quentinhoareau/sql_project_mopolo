@@ -101,29 +101,29 @@ VALUES(15, 'YACHTS', 5000);
 DELETE FROM BATEAU;
 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,1,9.75,3.12,1993,'Neuf',8,1,1,1); --Marque: Hunter & Type : Moteur 
+   VALUES ('MAF43878','Hunter Channel 32','blanc',80,0.8,'Diesel',5,1,9.75,3.12,1993,'Neuf',8,12,1,1); --Marque: Hunter & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais',10,1,1,2);--Marque: Nicholson & Type : Cabine 
+   VALUES ('RUF43931','Nicholson 303','rouge',110,0.8,'Diesel',5,'Le Nicholson 303 offre cinq couchettes dans deux cabines avec une salle d''eau séparée entre la cabine avant et le carré principal.',0,'Bateau en mauvaise état et besoin de réparation ',9.14,3.11,1979,'Mauvais',10,2,2,2);--Marque: Nicholson & Type : Cabine 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAX20870','Westerly Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf',9,1,1,3);--Marque: Westerly & Type : Moteur 
+   VALUES ('MAX20870','Westerly Pilot Saloon 48','blanc',130,0.9,'Diesel',8,'Un croiseur d''eau bleue parfait. Le Pilot Saloon 48 est la quintessence du savoir-faire Wauquiez en matière de conception et de construction de yachts haut de gamme.',1,NULL,14.77,4.61,2022,'Neuf',9,15,3,3);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOF75670','Bruce Roberts 36','bleu',100,1,'Essence',2,'La coque en acier Bruce Roberts 36 constitue un choix solide de navire pour la croisière hauturière, l''entraînement à la Moteur ou la croisière côtière. Ceci est vendu comme un projet inachevé en raison de la mauvaise santé du propriétaire actuel. Le propriétaire est ouvert aux offres.',1,NULL,10.97,3.29,1991,'Bon',16,1,1,4);--Marque: Bruce Roberts & Type : Moteur 
+   VALUES ('TOF75670','Bruce Roberts 36','bleu',100,1,'Essence',2,'La coque en acier Bruce Roberts 36 constitue un choix solide de navire pour la croisière hauturière, l''entraînement à la Moteur ou la croisière côtière. Ceci est vendu comme un projet inachevé en raison de la mauvaise santé du propriétaire actuel. Le propriétaire est ouvert aux offres.',1,NULL,10.97,3.29,1991,'Bon',16,15,1,4);--Marque: Bruce Roberts & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOF50658','Moody 31','blanc',70,0.4,'Essence',5,'Le Moody 31 est un petit croiseur familial bien construit qui a bien résisté à l''épreuve du temps. Un design moderne et actuel avec de grandes performances et un excellent logement, ils sont faciles à manipuler et amusants à naviguer.',1,NULL,9.45,3.3,1986,'Bon',11,1,1,5);--Marque: Moody & Type : Moteur 
+   VALUES ('TOF50658','Moody 31','blanc',70,0.4,'Essence',5,'Le Moody 31 est un petit croiseur familial bien construit qui a bien résisté à l''épreuve du temps. Un design moderne et actuel avec de grandes performances et un excellent logement, ils sont faciles à manipuler et amusants à naviguer.',1,NULL,9.45,3.3,1986,'Bon',11,8,1,5);--Marque: Moody & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF97643','Westerly Fulmar','rouge',112,0.6,'Essence',4,'Ce Westerly Fulmar de 1982 est une version à quille de ce croiseur familial populaire et durable, idéal pour naviguer dans les eaux de la côte Est/Kent et au-delà. Solidement construit et bien fini par Westerly Marine avec un intérieur conventionnel spacieux.',1,NULL,9.7,3.33,1982,'Neuf',9,1,1,6);--Marque: Westerly & Type : Moteur 
+   VALUES ('RUF97643','Westerly Fulmar','rouge',112,0.6,'Essence',4,'Ce Westerly Fulmar de 1982 est une version à quille de ce croiseur familial populaire et durable, idéal pour naviguer dans les eaux de la côte Est/Kent et au-delà. Solidement construit et bien fini par Westerly Marine avec un intérieur conventionnel spacieux.',1,NULL,9.7,3.33,1982,'Neuf',9,1,4,6);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF39495','Westerly Berwick','bleu',100,0.55,'Essence',5,1,9.14,3.05,1976,'Neuf',9,1,1,7);--Marque: Westerly & Type : Moteur 
+   VALUES ('RUF39495','Westerly Berwick','bleu',100,0.55,'Essence',5,1,9.14,3.05,1976,'Neuf',9,12,4,7);--Marque: Westerly & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUB74290','Nicholson 32','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,1,1,8);--Marque: Nicholson & Type : Moteur 
+   VALUES ('RUB74290','Nicholson 32','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,9,5,8);--Marque: Nicholson & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('MAF68208','Hunter Delta 25','vert',60,0.45,'Diesel',5,1,7.45,2.74,1980,'Neuf',8,1,1,9);--Marque: Hunter & Type : Moteur 
+   VALUES ('MAF68208','Hunter Delta 25','vert',60,0.45,'Diesel',5,1,7.45,2.74,1980,'Neuf',8,15,5,9);--Marque: Hunter & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUF37023','Hunter Legend 26','bleu',70,0.67,'Diesel',4,1,7.92,2.74,1996,'Bon',8,1,1,10);--Marque: Hunter & Type : courses 
+   VALUES ('RUF37023','Hunter Legend 26','bleu',70,0.67,'Diesel',4,1,7.92,2.74,1996,'Bon',8,14,5,10);--Marque: Hunter & Type : courses 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOR53026','Nautic Saintonge NS 44','blanc',97,0.98,'Diesel',6,1,13.4,4.2,1979,'Bon',17,1,1,11);--Marque: Nautic Saintonge & Type : Moteur 
+   VALUES ('TOR53026','Nautic Saintonge NS 44','blanc',97,0.98,'Diesel',6,1,13.4,4.2,1979,'Bon',7,15,6,11);--Marque: Nautic Saintonge & Type : Moteur 
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_DESCRIPTION,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('TOW49765','Moody S38','jaune',105,0.77,'Essence',6,'Si vous souhaitez goûter à la légendaire marque Moody et que vous Si vous aimez un yacht de luxe solide pour vous emmener, vous et votre famille, sur des croisières côtières ou longue distance, alors nous vous recommandons d''y jeter un coup d''œil',1,NULL,11.89,3.95,1996,'Neuf',11,1,1,12);--Marque: Moody & Type : Moteur
+   VALUES ('TOW49765','Moody S38','jaune',105,0.77,'Essence',6,'Si vous souhaitez goûter à la légendaire marque Moody et que vous Si vous aimez un yacht de luxe solide pour vous emmener, vous et votre famille, sur des croisières côtières ou longue distance, alors nous vous recommandons d''y jeter un coup d''œil',1,NULL,11.89,3.95,1996,'Neuf',11,8,10,12);--Marque: Moody & Type : Moteur
 
 
 ----------------TABLE : CLIENTELE----------------
@@ -162,47 +162,48 @@ VALUES (15, 'Thomas', 'Deborah', 19, 'Rue des Belges', '77100', 'Meaux', 'Thomas
 
 
 ----------------TABLE : RESERVATION----------------
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+DELETE FROM RESERVATION;
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(1,'MAF43878',TO_DATE('2022-04-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-04-22 10:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(2,'RUF43931',TO_DATE('2021-12-29 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-01-10 10:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(2,'MAF68208',TO_DATE('2022-03-20 11:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-03-25 11:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(3,'MAX20870',TO_DATE('2022-04-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-04-11 14:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(4,'TOF50658',TO_DATE('2022-02-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-03-10 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(7,'RUF97643',TO_DATE('2022-04-01 11:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-04-04 05:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(9,'TOR53026',TO_DATE('2023-02-15 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2023-02-18 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(9,'RUF37023',TO_DATE('2022-06-07 07:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-06-10 07:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(10,'MAF68208',TO_DATE('2022-11-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-11-22 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(11,'RUF37023',TO_DATE('2021-04-28 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2021-04-30 17:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(3,'RUF39495',TO_DATE('2022-06-09 10:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-06-20 10:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(8,'RUB74290',TO_DATE('2022-12-15 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-12-19 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(9,'MAF68208',TO_DATE('2022-10-31 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-11-03 07:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(15,'RUF39495',TO_DATE('2022-08-20 05:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-09-20 05:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(15,'TOR53026',TO_DATE('2022-03-22 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-04-22 10:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(13,'RUF37023',TO_DATE('2022-04-20 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-04-22 10:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
-    VALUES(13,'RUF39495',TO_DATE('2022-09-16 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-09-21 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
+    VALUES(13,'RUF39495',TO_DATE('2022-09-16 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-09-18 09:00:00','yyyy-mm-dd hh24:mi:ss'));
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(13,'RUB74290',TO_DATE('2022-08-03 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-08-10 20:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(12,'TOR53026',TO_DATE('2024-01-03 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2024-01-03 22:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(12,'MAF68208',TO_DATE('2022-03-20 20:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2022-03-24 08:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
     VALUES(10,'RUF39495',TO_DATE('2023-04-02 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2023-04-22 09:00:00','yyyy-mm-dd hh24:mi:ss'));
-INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,LOC_DATE_DEBUT,LOC_DATE_FIN)
-    VALUES(1,'TOR53026',TO_DATE('2023-02-15 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2023-03-15 17:00:00','yyyy-mm-dd hh24:mi:ss'));
+INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
+    VALUES(1,'TOR53026',TO_DATE('2023-03-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2023-03-15 17:00:00','yyyy-mm-dd hh24:mi:ss'));
