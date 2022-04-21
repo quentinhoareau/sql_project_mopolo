@@ -104,7 +104,7 @@ CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS
    BEGIN 
       SELECT COUNT(*) INTO nbReservation FROM RESERVATION WHERE BT_IMMATRICULE = bat_imma AND RES_DATE_DEBUT = date_deb;
       IF( nbReservation = 1 ) THEN
-      SELECT 1 INTO prix FROM RESERVATION WHERE BT_IMMATRICULE = bat_imma AND RES_DATE_DEBUT = date_deb;
+      SELECT 1 INTO prix FROM RESERVATION WHERE BT_IMMATRICULE = bat_imma AND RES_DATE_DEBUT = date_deb; -- TODO: REQ A FAIRE
       ELSE
          RAISE_APPLICATION_ERROR(-20001,'Aucune réservation n''est enregistré pour ce bateau : "'||bat_imma||'", impossible de calculer le prix.');
       END IF;
