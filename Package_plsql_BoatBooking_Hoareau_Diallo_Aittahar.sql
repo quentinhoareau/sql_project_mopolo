@@ -116,8 +116,13 @@ END RESERVATION_PACKAGE;
 
 DECLARE 
    prix number; 
+   imma reservation.BT_IMMATRICULE%type;
+   date_debut reservation.RES_DATE_DEBUT%type;
 BEGIN 
-   prix := RESERVATION_PACKAGE.prixReservation('MAF43878',TO_DATE('2022-04-20 09:00:00','yyyy-mm-dd hh24:mi:ss')); 
+   imma:= 'MAF43878';
+   date_debut:= TO_DATE('2022-04-20 09:00:00','yyyy-mm-dd hh24:mi:ss');
+   
+   prix := RESERVATION_PACKAGE.prixReservation(imma,date_debut); 
    dbms_output.put_line('Prix de la réservation: ' || prix); 
 END; 
 /
