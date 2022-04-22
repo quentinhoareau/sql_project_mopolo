@@ -31,9 +31,16 @@ WHERE BT_TYPE_CARBURANT = 'Diesel'
 ----------------CONSULTATION - 5 requêtes impliquant 2 tables avec jointures internes dont 1 externe + 1 group by + 1 tri----------------
 
 -- Req 1 -  Pour tous les bateaux afficher le nom/prénom du dernier client réservé ou afficher rien si aucun client (Req avec 1 jointure extrene)
-SELECT ... 
-FROM ...
-WHERE ...
+SELECT CL_NOM, CL_PRENOM
+FROM CLIENTELE
+WHERE CL_ID IN ( SELECT RES1.CL_ID
+                FROM RESERVATION RES1
+                INNER JOIN ( SELECT CL_ID, MAX(LOC_DATE_DEBUT) MAXDATE
+                    FROM RESERVATION
+                    WHERE BT_IMMATRICULE IN (SELECT DISTINCT BT_IMMATRICULE  FROM RESERVATION)
+                    GROUP BY CL_ID) RES2 
+                ON RES1.CL_ID = RES2.CL_ID
+                AND RES1.LOC_DATE_DEBUT = RES2.MAXDATE);
 
 -- Req 2 -  Donnez l'immatriculation, le nom, le type de carburant, le type de bateau qui sont de type Yachts et qui ne consomme pas de 'Desiel'.
 SELECT bt.bt_immatricule, bt.bt_nom, bt.bt_type_carburant 
