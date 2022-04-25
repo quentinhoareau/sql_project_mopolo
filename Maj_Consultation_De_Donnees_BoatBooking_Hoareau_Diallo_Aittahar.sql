@@ -12,10 +12,11 @@ SELECT *
 FROM Bateau
 WHERE BT_ANNEE < 1990;
 
--- Req 3 -  La liste des réservations (nom/prénom du client et bateau réservé) à partir d'aujourd'huis trié par date de début de la réservation  (Req avec Order By)
-SELECT ... 
-FROM ...
-WHERE ...
+-- Req 3 -  Compter les bateaux par couleur (Req avec Order by)
+SELECT count(*), BT_COULEUR
+FROM BATEAU
+GROUP BY BT_COULEUR
+ORDER BY BT_COULEUR;
 
 -- Req 4 -  Le nombre total réservation par bateau depuis toujours  (Req avec Group By)
 SELECT BT_IMMATRICULE, COUNT(*) AS "Nb de réservation"
@@ -50,10 +51,10 @@ WHERE bt.btype_id = btp.btype_id
 AND btp.btype_nom = 'Yachts' 
 AND bt.bt_type_carburant != 'Diesel';
 
--- Req 3 -  Tous les bataux qui sont sur le port de TOULON trié par numéros d'emplacement de Port (Req avec 1 tri)
-SELECT ... 
-FROM ...
-WHERE ...
+-- Req 3 -  La liste des réservations (nom/prénom du client et bateau réservé)trié par date de début de la réservation  (Req avec tri)
+SELECT c.CL_NOM, c.CL_PRENOM, b.BT_NOM, r.RES_DATE_DEBUT
+FROM CLIENTELE c inner join RESERVATION r on r.CL_ID = c.CL_ID inner join BATEAU b on r.BT_IMMATRICULE = b.BT_IMMATRICULE
+ORDER BY r.res_date_debut;
 
 -- Req 4 -  Nombres de réservation par ville de client depuis toujours  (Req avec Group By)
 SELECT cli.CL_ADDR_VILLE, COUNT(res.CL_ID) "Nb de réservation"
@@ -80,15 +81,17 @@ SELECT ...
 FROM ...
 WHERE ...
 
--- Req 3 -  Tous les marques des bateaux qui sont réservés ,à partir d'aujoud'huis.
-SELECT ...
-FROM ...
-WHERE ...
+-- Req 3 -  Toutes les marques des bateaux qui sont utilisables et qui se trouvent dans le port de Toulon
+SELECT m.MRQ_NOM, b.BT_NOM
+FROM MARQUE m INNER JOIN BATEAU b on m.MRQ_ID = b.MRQ_ID INNER JOIN PORT p on p.PRT_ID = b.PRT_ID
+WHERE p.PRT_ADDR_VILLE = 'Toulon' AND b.BT_UTILISABLE = 1;
 
 -- Req 4 -  Le nombre de bateaux par couleur dont le prix/heure du type de bateau est > 10 euros et le coefficient de la marque est > 0.6  (Req avec Group By)
-SELECT ...
-FROM ...
-WHERE ...
+SELECT COUNT(b.BT_IMMATRICULE), b.BT_COULEUR
+FROM BATEAU_TYPE bt inner join BATEAU b on bt.BTYPE_ID = b.BTYPE_ID inner join MARQUE m on b.MRQ_ID = m.MRQ_ID
+WHERE bt.BTYPE_PRIX_HEURE > 10 AND  m.MRQ_COEFF_MAJORATION > 0.6 
+GROUP BY b.BT_COULEUR
+ORDER BY COUNT(b.BT_IMMATRICULE) ASC;
 
 -- Req 5 -  La dernière marque de bateaux réservé ou pas pour tous les clients (Req avec 1 jointure externe)
 SELECT c.CL_ID, c.CL_NOM, c.CL_PRENOM,r.BT_IMMATRICULE "Dernier imma. bateau loué", mrq.mrq_nom "Dernière marque louée"
@@ -152,7 +155,17 @@ WHERE BT_IMMATRICULE IN (
     WHERE prt.prt_addr_ville = 'Toulon'
 );
 
--- Req 2 - [Description de la requete...]
-UPDATE ...
-SET ...
-WHERE ...
+-- Req 2 - Mettre à jour la disponibilité à utilisable des bateaux de type CABINE qui se toruvent dans le Port de Saint-Gilles
+UPDATE BATEAU
+SET BT_UTILISABLE = 1, BT_NOTE = 'Bateau réparé'
+WHERE PRT_ID IN (
+    SELECT b.PRT_ID 
+    FROM BATEAU b
+    INNER JOIN PORT p ON p.PRT_ID = b.PRT_ID 
+    WHERE p.PRT_NOM = 'Port de Saint-Gilles'
+) AND BTYPE_ID IN (
+    SELECT b.BTYPE_ID 
+    FROM BATEAU b
+    INNER JOIN BATEAU_TYPE bt ON bt.BTYPE_ID = b.BTYPE_ID 
+    WHERE bt.BTYPE_NOM = 'CABINE'
+);
