@@ -13,7 +13,7 @@ FROM Bateau
 WHERE BT_ANNEE < 1990;
 
 -- Req 3 -  Compter les bateaux par couleur (Req avec Order by)
-SELECT count(*), BT_COULEUR
+SELECT count(*) AS "Nombre", BT_COULEUR
 FROM BATEAU
 GROUP BY BT_COULEUR
 ORDER BY BT_COULEUR;
@@ -83,13 +83,15 @@ WHERE ...
 
 -- Req 3 -  Toutes les marques des bateaux qui sont utilisables et qui se trouvent dans le port de Toulon
 SELECT m.MRQ_NOM, b.BT_NOM
-FROM MARQUE m INNER JOIN BATEAU b on m.MRQ_ID = b.MRQ_ID INNER JOIN PORT p on p.PRT_ID = b.PRT_ID
+FROM MARQUE m 
+INNER JOIN BATEAU b on m.MRQ_ID = b.MRQ_ID 
+INNER JOIN PORT p on p.PRT_ID = b.PRT_ID
 WHERE p.PRT_ADDR_VILLE = 'Toulon' AND b.BT_UTILISABLE = 1;
 
--- Req 4 -  Le nombre de bateaux par couleur dont le prix/heure du type de bateau est > 10 euros et le coefficient de la marque est > 0.6  (Req avec Group By)
+-- Req 4 -  Le nombre de bateaux par couleur dont le prix/heure du type de bateau est > 10 euros et le coefficient de la marque est > 1.07  (Req avec Group By)
 SELECT COUNT(b.BT_IMMATRICULE), b.BT_COULEUR
 FROM BATEAU_TYPE bt inner join BATEAU b on bt.BTYPE_ID = b.BTYPE_ID inner join MARQUE m on b.MRQ_ID = m.MRQ_ID
-WHERE bt.BTYPE_PRIX_HEURE > 10 AND  m.MRQ_COEFF_MAJORATION > 0.6 
+WHERE bt.BTYPE_PRIX_HEURE > 10 AND  m.MRQ_COEFF_MAJORATION > 1.07 
 GROUP BY b.BT_COULEUR
 ORDER BY COUNT(b.BT_IMMATRICULE) ASC;
 
