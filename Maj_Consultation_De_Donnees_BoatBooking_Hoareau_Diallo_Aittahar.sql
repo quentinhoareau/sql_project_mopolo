@@ -32,17 +32,11 @@ WHERE BT_TYPE_CARBURANT = 'Diesel'
 ----------------CONSULTATION - 5 requêtes impliquant 2 tables avec jointures internes dont 1 externe + 1 group by + 1 tri----------------
 
 -- Req 1 -  Pour tous les bateaux afficher le nom/prénom du dernier client réservé ou afficher rien si aucun client (Req avec 1 jointure extrene)
-SELECT RES.BT_IMMATRICULE, CL.CL_NOM, CL.CL_PRENOM
-FROM CLIENTELE CL, RESERVATION RES
-WHERE CL.CL_ID = RES.CL_ID
-AND CL.CL_ID IN ( SELECT RES1.CL_ID
-                FROM RESERVATION RES1
-                INNER JOIN ( SELECT CL_ID, MAX(RES_DATE_DEBUT) MAXDATE
-                    FROM RESERVATION
-                    WHERE BT_IMMATRICULE IN (SELECT DISTINCT BT_IMMATRICULE  FROM RESERVATION)
-                    GROUP BY CL_ID) RES2 
-                ON RES1.CL_ID = RES2.CL_ID
-                AND RES1.RES_DATE_DEBUT = RES2.MAXDATE);
+SELECT BT.BT_IMMATRICULE, CL.CL_NOM, CL.CL_PRENOM, RES.RES_DATE_DEBUT
+FROM RESERVATION RES
+LEFT JOIN BATEAU BT ON BT.BT_IMMATRICULE = RES.BT_IMMATRICULE
+INNER JOIN CLIENTELE CL ON CL.CL_ID = RES.CL_ID
+WHERE RES.RES_DATE_DEBUT IN (SELECT MAX(RES_DATE_DEBUT) FROM RESERVATION GROUP BY BT_IMMATRICULE);
 
 -- Req 2 -  Donnez l'immatriculation, le nom, le type de carburant, le type de bateau qui sont de type Yachts et qui ne consomme pas de 'Desiel'.
 SELECT bt.bt_immatricule, bt.bt_nom, bt.bt_type_carburant 
@@ -72,9 +66,12 @@ WHERE prt.prt_addr_ville = 'Nice';
 ----------------CONSULTATION - 5 requêtes impliquant 3 tables (ou +) avec jointures internes dont 1 externe + 1 group by + 1 tri ----------------
 
 -- Req 1 -  Connaitre le prix total de chaque réservation du client Smith (nom) Keira (prénom)
-SELECT ...  
-FROM ...
-WHERE ...
+SELECT RES.BT_IMMATRICULE, RES.CL_ID, RES.RES_DATE_DEBUT, RES.RES_DATE_FIN, BTPE.BTYPE_PRIX_HEURE * CAST((CAST(RES.RES_DATE_FIN AS DATE) - CAST(RES.RES_DATE_DEBUT AS DATE)) AS INTEGER ) * (1 + MQ.MRQ_COEFF_MAJORATION) * 24 AS "MONTANT TOTAL"
+FROM RESERVATION RES, BATEAU_TYPE BTPE,BATEAU BT, MARQUE MQ
+WHERE BT.BT_IMMATRICULE = RES.BT_IMMATRICULE
+AND BT.MRQ_ID = MQ.MRQ_ID
+AND BT.BTYPE_ID = BTPE.BTYPE_ID
+AND RES.CL_ID IN ( SELECT CL_ID FROM CLIENTELE WHERE CL_NOM = 'Smith' AND CL_PRENOM = 'Keira');
 
 -- Req 2 -  Le nom des bateaux trié par couleur de type "Hunter" réservé par des clients habitant à 'Paris' (Req avec 1 tri)
 SELECT ... 
