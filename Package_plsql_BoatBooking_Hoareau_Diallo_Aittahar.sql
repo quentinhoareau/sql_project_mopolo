@@ -138,13 +138,41 @@ END;
 
 /*==============================================================*/
 /* Trigger 1 :   
-/* [Description...]                                
+/* Empêcher de mettre un bateau sur un port dont la capacité est plein. 
+/* Exemple : Le port de Toulon peut avoir 10 bateau maximum sur son port. 
+/* Si une requête INSERT ou UPDATE est exécuté sur cette table alors on vérifie si la capacité peut accueillir un autre bateau, 
+/* si n'est pas le cas générer une exception customisé.                               
 /*==============================================================*/
 --Création du trigger
-...
+CREATE OR REPLACE TRIGGER TRIGGER_BATEAU_PORT
+BEFORE INSERT OR UPDATE ON BATEAU
+FOR EACH ROW
+DECLARE
+    nb_total number(4);
+    nb_bat number(4);
+BEGIN
+    nb_total := 0;
+    nb_bat := 0;
+    
+    SELECT PRT_CAP_BATEAU INTO nb_total
+    FROM PORT
+    WHERE PRT_ID = :new.PRT_ID;
+    
+    SELECT COUNT(*) INTO nb_bat
+    FROM BATEAU
+    WHERE PRT_ID = :new.PRT_ID;
+    
+    IF (nb_bat >= nb_total)
+        THEN RAISE_APPLICATION_ERROR(-20000,'Impossible d''ajouter un bateau, le port est complet');
+    END IF;
+END TRIGGER_BATEAU_PORT;
 
---Utilisation du trigger
-...
+-- Tester le trigger :
+-- Description : On ne pourra pas ajouter les 2 bateaux dans le Port Lympia car il possède déjà 3 bateaux sur 4 places disponibles, seulement le NicholsonOne pourra être enregistré.
+INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
+   VALUES ('RUB71118','NicholsonOne','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,9,5,10);
+INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
+   VALUES ('RUB74008','NicholsonTwo','blanc',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,9,5,11);
 
 
 
