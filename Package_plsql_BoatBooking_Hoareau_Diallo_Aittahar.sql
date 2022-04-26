@@ -145,27 +145,28 @@ END;
 /*==============================================================*/
 --Création du trigger
 CREATE OR REPLACE TRIGGER TRIGGER_BATEAU_PORT
-BEFORE INSERT OR UPDATE ON BATEAU
-FOR EACH ROW
-DECLARE
-    nb_total number(4);
-    nb_bat number(4);
-BEGIN
-    nb_total := 0;
-    nb_bat := 0;
-    
-    SELECT PRT_CAP_BATEAU INTO nb_total
-    FROM PORT
-    WHERE PRT_ID = :new.PRT_ID;
-    
-    SELECT COUNT(*) INTO nb_bat
-    FROM BATEAU
-    WHERE PRT_ID = :new.PRT_ID;
-    
-    IF (nb_bat >= nb_total)
-        THEN RAISE_APPLICATION_ERROR(-20000,'Impossible d''ajouter un bateau, le port est complet');
-    END IF;
-END TRIGGER_BATEAU_PORT;
+  BEFORE INSERT OR UPDATE ON BATEAU
+  FOR EACH ROW
+  DECLARE
+      nb_total number(4);
+      nb_bat number(4);
+  BEGIN
+      nb_total := 0;
+      nb_bat := 0;
+
+      SELECT PRT_CAP_BATEAU INTO nb_total
+      FROM PORT
+      WHERE PRT_ID = :new.PRT_ID;
+
+      SELECT COUNT(*) INTO nb_bat
+      FROM BATEAU
+      WHERE PRT_ID = :new.PRT_ID;
+
+      IF (nb_bat >= nb_total)
+          THEN RAISE_APPLICATION_ERROR(-20000,'Impossible d''ajouter un bateau, le port est complet');
+      END IF;
+  END TRIGGER_BATEAU_PORT;
+ /
 
 -- Tester le trigger :
 -- Description : On ne pourra pas ajouter les 2 bateaux dans le Port Lympia car il possède déjà 3 bateaux sur 4 places disponibles, seulement le NicholsonOne pourra être enregistré.
