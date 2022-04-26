@@ -157,17 +157,14 @@ WHERE BT_IMMATRICULE IN (
     WHERE prt.prt_addr_ville = 'Toulon'
 );
 
--- Req 2 - Mettre à jour la disponibilité à utilisable des bateaux de type CABINE qui se toruvent dans le Port de Saint-Gilles
+-- Req 2 - Mettre à jour tous comme 'utilisable' et supprimé les notes des bateaux de type CABINE qui se trouve dans le Port de Saint-Gilles
 UPDATE BATEAU
-SET BT_UTILISABLE = 1, BT_NOTE = 'Bateau réparé'
-WHERE PRT_ID IN (
-    SELECT b.PRT_ID 
+SET BT_UTILISABLE = 1, BT_NOTE = NULL
+WHERE BT_IMMATRICULE IN (
+    SELECT b.BT_IMMATRICULE
     FROM BATEAU b
     INNER JOIN PORT p ON p.PRT_ID = b.PRT_ID 
-    WHERE p.PRT_NOM = 'Port de Saint-Gilles'
-) AND BTYPE_ID IN (
-    SELECT b.BTYPE_ID 
-    FROM BATEAU b
     INNER JOIN BATEAU_TYPE bt ON bt.BTYPE_ID = b.BTYPE_ID 
-    WHERE bt.BTYPE_NOM = 'CABINE'
+    WHERE p.PRT_NOM = 'Port de Saint-Gilles'
+    AND bt.BTYPE_NOM = 'CABINE'
 );
