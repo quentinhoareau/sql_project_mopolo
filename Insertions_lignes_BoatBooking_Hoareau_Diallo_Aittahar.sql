@@ -126,6 +126,7 @@ INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARB
    VALUES ('TOW49765','Moody S38','jaune',105,0.77,'Essence',6,'Si vous souhaitez goûter à la légendaire marque Moody et que vous Si vous aimez un yacht de luxe solide pour vous emmener, vous et votre famille, sur des croisières côtières ou longue distance, alors nous vous recommandons d''y jeter un coup d''œil',1,NULL,11.89,3.95,1996,'Neuf',11,8,10,12);--Marque: Moody & Type : Moteur
 
 
+
 ----------------TABLE : CLIENTELE----------------
 DELETE FROM CLIENTELE;
 

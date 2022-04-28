@@ -104,7 +104,17 @@ CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS
    BEGIN 
       SELECT COUNT(*) INTO nbReservation FROM RESERVATION WHERE BT_IMMATRICULE = bat_imma AND RES_DATE_DEBUT = date_deb;
       IF( nbReservation = 1 ) THEN
-      SELECT 1 INTO prix FROM RESERVATION WHERE BT_IMMATRICULE = bat_imma AND RES_DATE_DEBUT = date_deb; -- TODO: REQ A FAIRE
+      SELECT 
+         BTPE.BTYPE_PRIX_HEURE * (24 * (to_date(to_char(RES.RES_DATE_FIN, 'YYYY-MM-DD hh24:mi'), 'YYYY-MM-DD hh24:mi') - to_date(to_char(RES.RES_DATE_DEBUT, 'YYYY-MM-DD hh24:mi'), 'YYYY-MM-DD hh24:mi') )) * MQ.MRQ_COEFF_MAJORATION 
+         INTO prix
+      FROM RESERVATION RES
+      INNER JOIN BATEAU BT ON BT.BT_IMMATRICULE = RES.BT_IMMATRICULE
+      INNER JOIN MARQUE MQ ON BT.MRQ_ID = MQ.MRQ_ID
+      INNER JOIN CLIENTELE CL ON RES.CL_ID = CL.CL_ID
+      INNER JOIN BATEAU_TYPE BTPE ON BT.BTYPE_ID = BTPE.BTYPE_ID
+      WHERE BT.BT_IMMATRICULE = bat_imma
+      AND RES.RES_DATE_DEBUT = date_deb;
+      
       ELSE
          RAISE_APPLICATION_ERROR(-20001,'Aucune réservation n''est enregistré pour ce bateau : "'||bat_imma||'", impossible de calculer le prix.');
       END IF;
