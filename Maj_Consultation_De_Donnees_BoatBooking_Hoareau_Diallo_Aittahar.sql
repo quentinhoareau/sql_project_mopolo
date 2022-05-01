@@ -85,10 +85,14 @@ WHERE CL.CL_NOM = 'Smith'
 AND  CL.CL_PRENOM = 'Keira';
 
 -- Req 2 -  Le nom des bateaux, couleur  trié par couleur réservé par au moins un client habitant à 'Paris' et 'Hunter' pour les bateaux (Req avec 1 tri)
-SELECT ... 
-FROM ...
-WHERE ...
-
+SELECT BT.BT_IMMATRICULE, BT.BT_NOM, BT.BT_COULEUR, CL.CL_ADDR_VILLE, MQ.MRQ_NOM
+FROM BATEAU BT
+INNER JOIN MARQUE MQ ON MQ.MRQ_ID = BT.MRQ_ID
+INNER JOIN RESERVATION RES ON RES.BT_IMMATRICULE = BT.BT_IMMATRICULE
+INNER JOIN CLIENTELE CL ON CL.CL_ID = RES.CL_ID
+WHERE CL.CL_ADDR_VILLE = 'Paris'
+AND  MQ.MRQ_NOM = 'Hunter'
+ORDER BY BT.BT_COULEUR ASC;
 -- Req 3 -  Toutes les marques des bateaux qui sont utilisables et qui se trouvent dans le port de Toulon
 SELECT m.MRQ_NOM, b.BT_NOM
 FROM MARQUE m 
