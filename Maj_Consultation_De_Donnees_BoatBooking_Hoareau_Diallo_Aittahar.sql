@@ -92,6 +92,10 @@ INNER JOIN RESERVATION RES ON RES.BT_IMMATRICULE = BT.BT_IMMATRICULE
 INNER JOIN CLIENTELE CL ON CL.CL_ID = RES.CL_ID
 WHERE CL.CL_ADDR_VILLE = 'Paris'
 AND  MQ.MRQ_NOM = 'Hunter'
+AND EXISTS (SELECT *
+                FROM RESERVATION 
+                GROUP BY BT_IMMATRICULE 
+                HAVING COUNT(CL_ID) >= 1)
 ORDER BY BT.BT_COULEUR ASC;
 -- Req 3 -  Toutes les marques des bateaux qui sont utilisables et qui se trouvent dans le port de Toulon
 SELECT m.MRQ_NOM, b.BT_NOM
