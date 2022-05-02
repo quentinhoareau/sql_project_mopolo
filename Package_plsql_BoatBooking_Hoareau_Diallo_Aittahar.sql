@@ -86,17 +86,21 @@ END BATEAU_PACKAGE;
 /* Package 5 - Table RESERVATION :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 CREATE OR REPLACE PACKAGE RESERVATION_PACKAGE AS 
 
-   --Consulation
+   --Consulation du prix de réservation pour un bateau et une date de début donnée existante
    FUNCTION prixReservation(bat_imma reservation.BT_IMMATRICULE%type, date_deb reservation.RES_DATE_DEBUT%type) RETURN number; 
+
+   --Supprimer tous les réservation d'un client 
+   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type); 
 
 END RESERVATION_PACKAGE; 
 /
 
 CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS 
 
+    --Consulation du prix de réservation pour un bateau et une date de début donnée existante
    FUNCTION prixReservation(bat_imma reservation.BT_IMMATRICULE%type, date_deb reservation.RES_DATE_DEBUT%type) RETURN number
    IS 
         nbReservation number;
@@ -121,9 +125,18 @@ CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS
       RETURN prix;
    END prixReservation; 
 
+   --Supprimer tous les réservation d'un client 
+   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type)  IS 
+   BEGIN 
+      DELETE FROM RESERVATION 
+      WHERE RESERVATION.CL_ID = cl_id; 
+   END supprimerReservationClient;  
+
+
+
 END RESERVATION_PACKAGE; 
 /
-
+-- Test de mon pakcage
 DECLARE 
    prix number; 
    imma reservation.BT_IMMATRICULE%type;
@@ -134,6 +147,7 @@ BEGIN
    
    prix := RESERVATION_PACKAGE.prixReservation(imma,date_debut); 
    dbms_output.put_line('Prix de la réservation: ' || prix); 
+   RESERVATION_PACKAGE.supprimerReservationClient(5);
 END; 
 /
 
