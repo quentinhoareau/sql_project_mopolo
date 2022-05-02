@@ -5,52 +5,44 @@
 /* Package 1 - Table BATEAU :  
 /*
 /*==============================================================*/
-
+set serveroutput on ;
 CREATE OR REPLACE PACKAGE BATEAU_PACKAGE AS 
   
    -- Insertion
-   PROCEDURE ajouterBateau(...); 
-   
-   -- Supression 
-   PROCEDURE supprimerBateau(...); 
+   -- PROCEDURE ajouterBateau(...); 
 
    --Consulation
-   FUNCTION consulterBateau(...); 
-
-   -- Mise à jours
-   PROCEDURE majBateau(...); 
-  
+   FUNCTION nbBateauUtilisable RETURN number; 
 END BATEAU_PACKAGE; 
 /
 
 CREATE OR REPLACE PACKAGE BODY BATEAU_PACKAGE AS 
-   PROCEDURE ajouterBateau(...)
-   IS 
-   BEGIN 
-      ...
-   END ajouterBateau; 
-   
-   PROCEDURE supprimerBateau(...) 
-   IS 
-   BEGIN 
-      ...
-   END supprimerBateau; 
+   -- PROCEDURE ajouterBateau(...)
+   -- IS 
+   -- BEGIN 
+   --    ...
+   -- END ajouterBateau; 
 
-   FUNCTION consulterBateau(...)  RETURN ...
+
+   FUNCTION nbBateauUtilisable  RETURN number
    IS 
+      nbBateau number;
    BEGIN 
-      ...
-   END consulterBateau; 
+      SELECT COUNT(*) INTO nbBateau  FROM BATEAU WHERE BT_UTILISABLE = 1;
+      RETURN nbBateau;
+   END nbBateauUtilisable; 
     
-
-   PROCEDURE majBateau(...) 
-   IS 
-   BEGIN 
-      ...
-   END majBateau; 
-   
-   
 END BATEAU_PACKAGE; 
+/
+
+-- Test de mon pakcage
+DECLARE 
+   nbBateauUtili number;
+BEGIN 
+   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisable(); 
+   dbms_output.put_line('Nombre de bateau(x) utilisable actuellement: ' || nbBateauUtili); 
+END; 
+/
 
 
 
@@ -60,7 +52,7 @@ END BATEAU_PACKAGE;
 /* Package 2 - Table PORT :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -70,7 +62,7 @@ END BATEAU_PACKAGE;
 /* Package 3 - Table BATEAU_TYPE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -78,7 +70,7 @@ END BATEAU_PACKAGE;
 /* Package 4 - Table CLIENTELE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -156,7 +148,7 @@ END;
 /* Package 6 - Table MARQUE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
