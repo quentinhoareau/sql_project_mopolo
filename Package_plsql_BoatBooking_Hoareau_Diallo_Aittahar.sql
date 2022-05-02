@@ -7,30 +7,40 @@
 /*==============================================================*/
 set serveroutput on ;
 CREATE OR REPLACE PACKAGE BATEAU_PACKAGE AS 
-  
-   -- Insertion
-   -- PROCEDURE ajouterBateau(...); 
 
-   --Consulation
-   FUNCTION nbBateauUtilisable RETURN number; 
+   -- Retourne le nombre de bateau utlisable actuellement 
+   FUNCTION nbBateauUtilisablePort(name_port PORT.PRT_NOM%type) RETURN number; 
+
+   -- Mettre à jours tous les status (utilisable ou non) dees bateaux situé sur un port donnée en paramètre
+   PROCEDURE updateBateauStatusParPort(name_port PORT.PRT_NOM%type, utilisable BATEAU.BT_UTILISABLE%type); 
+
 END BATEAU_PACKAGE; 
 /
 
 CREATE OR REPLACE PACKAGE BODY BATEAU_PACKAGE AS 
-   -- PROCEDURE ajouterBateau(...)
-   -- IS 
-   -- BEGIN 
-   --    ...
-   -- END ajouterBateau; 
 
-
-   FUNCTION nbBateauUtilisable  RETURN number
+   -- Retourne le nombre de bateau utlisable actuellement sur un port donné
+   FUNCTION nbBateauUtilisablePort(name_port PORT.PRT_NOM%type)  RETURN number
    IS 
       nbBateau number;
    BEGIN 
-      SELECT COUNT(*) INTO nbBateau  FROM BATEAU WHERE BT_UTILISABLE = 1;
+      SELECT COUNT(*) INTO nbBateau 
+      FROM BATEAU b
+      INNER JOIN PORT p ON p.PRT_ID = b.PRT_ID
+      WHERE b.BT_UTILISABLE = 1
+      AND p.PRT_NOM = name_port;
       RETURN nbBateau;
-   END nbBateauUtilisable; 
+   END nbBateauUtilisablePort; 
+
+   -- Mettre à jours tous les status (utilisable ou non) dees bateaux situé sur un port donnée en paramètre
+   PROCEDURE updateBateauStatusParPort(name_port PORT.PRT_NOM%type, utilisable BATEAU.BT_UTILISABLE%type)
+   IS 
+   BEGIN 
+      UPDATE BATEAU
+      SET BT_UTILISABLE = utilisable
+      WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = name_port );
+      dbms_output.put_line('Requête update exécutée...'); 
+   END updateBateauStatusParPort; 
     
 END BATEAU_PACKAGE; 
 /
@@ -38,9 +48,15 @@ END BATEAU_PACKAGE;
 -- Test de mon pakcage
 DECLARE 
    nbBateauUtili number;
+   portConcerne PORT.PRT_NOM%type;
 BEGIN 
-   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisable(); 
-   dbms_output.put_line('Nombre de bateau(x) utilisable actuellement: ' || nbBateauUtili); 
+   portConcerne := 'Port Lympia';
+   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisablePort(portConcerne); 
+   dbms_output.put_line('Nombre de bateau(x) sur le port : "' || portConcerne ||'" utilisable actuellement: ' || nbBateauUtili); 
+
+   BATEAU_PACKAGE.updateBateauStatusParPort(portConcerne, 1); 
+   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisablePort(portConcerne); 
+   dbms_output.put_line('Nombre de bateau(x) APRES UPDATE utilisable sur le port : ' || nbBateauUtili); 
 END; 
 /
 
