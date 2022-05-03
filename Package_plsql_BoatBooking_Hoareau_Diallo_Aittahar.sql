@@ -5,52 +5,60 @@
 /* Package 1 - Table BATEAU :  
 /*
 /*==============================================================*/
-
+set serveroutput on ;
 CREATE OR REPLACE PACKAGE BATEAU_PACKAGE AS 
-  
-   -- Insertion
-   PROCEDURE ajouterBateau(...); 
-   
-   -- Supression 
-   PROCEDURE supprimerBateau(...); 
 
-   --Consulation
-   FUNCTION consulterBateau(...); 
+   -- Retourne le nombre de bateau utlisable actuellement 
+   FUNCTION nbBateauUtilisablePort(name_port PORT.PRT_NOM%type) RETURN number; 
 
-   -- Mise à jours
-   PROCEDURE majBateau(...); 
-  
+   -- Mettre à jours tous les status (utilisable ou non) dees bateaux situé sur un port donnée en paramètre
+   PROCEDURE updateBateauStatusParPort(name_port PORT.PRT_NOM%type, utilisable BATEAU.BT_UTILISABLE%type); 
+
 END BATEAU_PACKAGE; 
 /
 
 CREATE OR REPLACE PACKAGE BODY BATEAU_PACKAGE AS 
-   PROCEDURE ajouterBateau(...)
-   IS 
-   BEGIN 
-      ...
-   END ajouterBateau; 
-   
-   PROCEDURE supprimerBateau(...) 
-   IS 
-   BEGIN 
-      ...
-   END supprimerBateau; 
 
-   FUNCTION consulterBateau(...)  RETURN ...
+   -- Retourne le nombre de bateau utlisable actuellement sur un port donné
+   FUNCTION nbBateauUtilisablePort(name_port PORT.PRT_NOM%type)  RETURN number
+   IS 
+      nbBateau number;
+   BEGIN 
+      SELECT COUNT(*) INTO nbBateau 
+      FROM BATEAU b
+      INNER JOIN PORT p ON p.PRT_ID = b.PRT_ID
+      WHERE b.BT_UTILISABLE = 1
+      AND p.PRT_NOM = name_port;
+      RETURN nbBateau;
+   END nbBateauUtilisablePort; 
+
+   -- Mettre à jours tous les status (utilisable ou non) dees bateaux situé sur un port donnée en paramètre
+   PROCEDURE updateBateauStatusParPort(name_port PORT.PRT_NOM%type, utilisable BATEAU.BT_UTILISABLE%type)
    IS 
    BEGIN 
-      ...
-   END consulterBateau; 
+      UPDATE BATEAU
+      SET BT_UTILISABLE = utilisable
+      WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = name_port );
+      dbms_output.put_line('Requête update exécutée...'); 
+   END updateBateauStatusParPort; 
     
-
-   PROCEDURE majBateau(...) 
-   IS 
-   BEGIN 
-      ...
-   END majBateau; 
-   
-   
 END BATEAU_PACKAGE; 
+/
+
+-- Test de mon pakcage
+DECLARE 
+   nbBateauUtili number;
+   portConcerne PORT.PRT_NOM%type;
+BEGIN 
+   portConcerne := 'Port Lympia';
+   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisablePort(portConcerne); 
+   dbms_output.put_line('Nombre de bateau(x) sur le port : "' || portConcerne ||'" utilisable actuellement: ' || nbBateauUtili); 
+
+   BATEAU_PACKAGE.updateBateauStatusParPort(portConcerne, 1); 
+   nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisablePort(portConcerne); 
+   dbms_output.put_line('Nombre de bateau(x) APRES UPDATE utilisable sur le port : ' || nbBateauUtili); 
+END; 
+/
 
 
 
@@ -60,7 +68,7 @@ END BATEAU_PACKAGE;
 /* Package 2 - Table PORT :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -70,7 +78,7 @@ END BATEAU_PACKAGE;
 /* Package 3 - Table BATEAU_TYPE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -78,7 +86,7 @@ END BATEAU_PACKAGE;
 /* Package 4 - Table CLIENTELE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 
@@ -86,17 +94,21 @@ END BATEAU_PACKAGE;
 /* Package 5 - Table RESERVATION :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 CREATE OR REPLACE PACKAGE RESERVATION_PACKAGE AS 
 
-   --Consulation
+   --Consulation du prix de réservation pour un bateau et une date de début donnée existante
    FUNCTION prixReservation(bat_imma reservation.BT_IMMATRICULE%type, date_deb reservation.RES_DATE_DEBUT%type) RETURN number; 
+
+   --Supprimer tous les réservation d'un client 
+   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type); 
 
 END RESERVATION_PACKAGE; 
 /
 
 CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS 
 
+    --Consulation du prix de réservation pour un bateau et une date de début donnée existante
    FUNCTION prixReservation(bat_imma reservation.BT_IMMATRICULE%type, date_deb reservation.RES_DATE_DEBUT%type) RETURN number
    IS 
         nbReservation number;
@@ -121,9 +133,18 @@ CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS
       RETURN prix;
    END prixReservation; 
 
+   --Supprimer tous les réservation d'un client 
+   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type)  IS 
+   BEGIN 
+      DELETE FROM RESERVATION 
+      WHERE RESERVATION.CL_ID = cl_id; 
+   END supprimerReservationClient;  
+
+
+
 END RESERVATION_PACKAGE; 
 /
-
+-- Test de mon pakcage
 DECLARE 
    prix number; 
    imma reservation.BT_IMMATRICULE%type;
@@ -134,6 +155,7 @@ BEGIN
    
    prix := RESERVATION_PACKAGE.prixReservation(imma,date_debut); 
    dbms_output.put_line('Prix de la réservation: ' || prix); 
+   RESERVATION_PACKAGE.supprimerReservationClient(5);
 END; 
 /
 
@@ -142,7 +164,7 @@ END;
 /* Package 6 - Table MARQUE :  
 /*
 /*==============================================================*/
-
+set serveroutput on
 ...
 
 

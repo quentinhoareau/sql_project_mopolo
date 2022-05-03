@@ -74,7 +74,8 @@ CREATE TABLE PORT (
     PRT_ADDR_CP VARCHAR(5) NOT NULL,
     PRT_ADDR_VILLE VARCHAR(50) NOT NULL,
     PRT_CAP_BATEAU NUMBER(4) NOT NULL constraint CKC_PRT_CAP_BATEAU_PORT CHECK (PRT_CAP_BATEAU >= 1),
-    constraint PK_PORT primary key (PRT_ID)
+    constraint PK_PORT primary key (PRT_ID),
+    constraint UNIQUE_PRT_NOM UNIQUE (PRT_NOM)
 );
 
 /*==============================================================*/
