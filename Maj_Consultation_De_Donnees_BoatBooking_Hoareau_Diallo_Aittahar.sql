@@ -143,10 +143,12 @@ UPDATE CLIENTELE
 SET CL_PRENOM = 'Jean'
 WHERE CL_PRENOM = 'Aimee' and CL_NOM = 'Johnson';
 
--- Req 2 - [Description de la requete...]
-UPDATE ...
-SET ...
-WHERE ...
+-- Req 2 - Le client Davies Georgina a recemment amenage sur Nice au 21 rue trachel.
+UPDATE
+CLIENTELE
+SET CL_ADDR_VILLE = 'Nice', CL_ADDR_CP = '06000', CL_ADDR_RUE = 'Rue Trachel', CL_ADDR_NUM = 21
+WHERE CL_NOM = 'Davies'
+AND CL_PRENOM = 'Georgina';
 
 
 ----------------Requêtes MAJ - 2 requêtes impliquant 2 tables----------------
@@ -156,10 +158,15 @@ UPDATE BATEAU
 SET BT_UTILISABLE = 0
 WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = 'Port Nice Carras' );
 
--- Req 2 - [Description de la requete...]
-UPDATE ...
-SET ...
-WHERE ...
+-- Req 2 - Le client Smith Keira veut changer sa date de reservation pour le bateau numero TOR53026 de 15/02/23 09:00:00 a 15/01/23 09:00:00.
+UPDATE RESERVATION RES
+SET RES.RES_DATE_DEBUT = '15/01/23 09:00:00,000000000'
+WHERE RES.CL_ID IN ( SELECT CL_ID 
+                        FROM CLIENTELE
+                        WHERE CL_NOM = 'Smith'
+                        AND  CL_PRENOM = 'Keira'
+                    )
+AND RES.BT_IMMATRICULE = 'TOR53026';
 
 ----------------Requêtes MAJ - 2 requêtes impliquant plus de 2 tables----------------
 
