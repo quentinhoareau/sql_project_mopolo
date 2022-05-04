@@ -158,14 +158,15 @@ UPDATE BATEAU
 SET BT_UTILISABLE = 0
 WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = 'Port Nice Carras' );
 
--- Req 2 - Le client Smith Keira veut changer sa date de reservation pour le bateau numero TOR53026 de 15/02/23 09:00:00 a 15/01/23 09:00:00.
+-- Req 2 - Le client Smith Keira veut changer sa date de début de reservation pour le bateau numero TOR53026 de 15/02/23 09:00:00 a 15/01/23 09:00:00.
 UPDATE RESERVATION RES
 SET RES.RES_DATE_DEBUT = '15/01/23 09:00:00,000000000'
-WHERE RES.CL_ID IN ( SELECT CL_ID 
-                        FROM CLIENTELE
-                        WHERE CL_NOM = 'Smith'
-                        AND  CL_PRENOM = 'Keira'
-                    )
+WHERE RES.CL_ID IN ( 
+    SELECT CL_ID 
+    FROM CLIENTELE
+    WHERE CL_NOM = 'Smith'
+    AND  CL_PRENOM = 'Keira'
+)
 AND RES.BT_IMMATRICULE = 'TOR53026';
 
 ----------------Requêtes MAJ - 2 requêtes impliquant plus de 2 tables----------------
