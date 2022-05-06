@@ -68,8 +68,59 @@ END;
 /* Package 2 - Table PORT :  
 /*
 /*==============================================================*/
-set serveroutput on
-...
+set serveroutput on ;
+CREATE OR REPLACE PACKAGE PORT_PACKAGE AS 
+
+   -- Retourne le nombre de place dans un port (capacité total)
+   FUNCTION nbPlacePort(name_port PORT.PRT_NOM%type) RETURN number; 
+
+   -- Mettre à jours la capacité total de place dans un port donné
+   PROCEDURE updatePortCapBat(name_port PORT.PRT_NOM%type, cap number); 
+
+END PORT_PACKAGE; 
+/
+
+CREATE OR REPLACE PACKAGE BODY PORT_PACKAGE AS 
+
+   -- Retourne le nombre de place dans un port (capacité total)
+   FUNCTION nbPlacePort(name_port PORT.PRT_NOM%type)  RETURN number
+   IS 
+      capBat number;
+   BEGIN 
+      SELECT PRT_CAP_BATEAU INTO capBat 
+      FROM PORT
+      WHERE PRT_NOM = name_port;
+      RETURN capBat;
+   END nbPlacePort; 
+
+   -- Mettre à jours la capacité total de place dans un port donné
+   PROCEDURE updatePortCapBat(name_port PORT.PRT_NOM%type, cap number)
+   IS 
+   BEGIN 
+      UPDATE PORT
+      SET PRT_CAP_BATEAU = cap
+      WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  PRT_NOM = name_port );
+      dbms_output.put_line('Requête update sur la table PORT exécutée...'); 
+   END updatePortCapBat; 
+    
+END PORT_PACKAGE; 
+/
+
+-- Test de mon pakcage
+DECLARE 
+   cap number;
+   port_name PORT.PRT_NOM%type;
+BEGIN 
+   port_name := 'Port Lympia';
+   
+   cap := PORT_PACKAGE.nbPlacePort(port_name); 
+   dbms_output.put_line('Capacité total du port AVANT UPDATE : ' || cap); 
+   PORT_PACKAGE.updatePortCapBat(port_name, 20); 
+   cap := PORT_PACKAGE.nbPlacePort(port_name); 
+   dbms_output.put_line('Capacité total du port APRES UPDATE : ' || cap); 
+END; 
+/
+
 
 
 
