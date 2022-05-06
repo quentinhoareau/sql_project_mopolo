@@ -79,8 +79,68 @@ set serveroutput on
 /*
 /*==============================================================*/
 set serveroutput on
-...
+CREATE OR REPLACE PACKAGE BATEAU_TYPE_PACKAGE AS
+-- consultation du prix par heure de location de type de bateau.
+   FUNCTION prixParHeureDeLocation(nom_btype BATEAU_TYPE.BTYPE_NOM%TYPE) RETURN NUMBER;
+-- Ajout d'un type de bateau
+   PROCEDURE ajouterUnTypeDeBateau(nom BATEAU_TYPE.BTYPE_NOM%TYPE, prix BATEAU_TYPE.BTYPE_PRIX_HEURE%TYPE);
+END BATEAU_TYPE_PACKAGE;
+/
+CREATE OR REPLACE PACKAGE BODY BATEAU_TYPE_PACKAGE AS
+-- consultation du prix par heure de location de type de bateau.
+   FUNCTION prixParHeureDeLocation(nom_btype BATEAU_TYPE.BTYPE_NOM%TYPE) RETURN NUMBER
+   IS
+      prixExiste number;
+      prixHL BATEAU_TYPE.BTYPE_PRIX_HEURE%TYPE;
+   BEGIN
+      SELECT count(*) INTO prixExiste
+      FROM BATEAU_TYPE BTYPE 
+      WHERE BTYPE.BTYPE_NOM = nom_btype;
+      IF(prixExiste = 1) THEN
+      SELECT BTYPE.BTYPE_PRIX_HEURE INTO prixHL
+      FROM BATEAU_TYPE BTYPE 
+      WHERE BTYPE.BTYPE_NOM = nom_btype;
+      ELSE
+         RAISE_APPLICATION_ERROR(-20001,'Aucun type de bateau n''est enregistré pour ce nom : "'||nom_btype||'", impossible de trouver le prix.');
+      END IF;
+      RETURN prixHL;
+   END prixParHeureDeLocation;
 
+   -- Ajout d'un type de bateau
+   PROCEDURE ajouterUnTypeDeBateau(nom BATEAU_TYPE.BTYPE_NOM%TYPE, prix BATEAU_TYPE.BTYPE_PRIX_HEURE%TYPE)
+   IS
+      id_btype BATEAU_TYPE.BTYPE_ID%TYPE;
+      counter NUMBER;
+   BEGIN
+      SELECT COUNT(*) INTO counter
+      FROM BATEAU_TYPE
+      WHERE BTYPE_NOM = nom;
+      IF(counter != 1) THEN
+         SELECT MAX(BTYPE_ID) + 1 INTO id_btype
+         FROM BATEAU_TYPE;
+         INSERT INTO BATEAU_TYPE VALUES(id_btype, nom, prix);
+      ELSE
+         RAISE_APPLICATION_ERROR(-20001,'Le type de bateau: '||nom||' existe deja.');
+      END IF;
+   END ajouterUnTypeDeBateau;
+
+END BATEAU_TYPE_PACKAGE;
+/
+
+DECLARE 
+   prix number; 
+   nom_btype BATEAU_TYPE.BTYPE_NOM%TYPE;
+BEGIN 
+   nom_btype := 'CABINE';
+   
+   prix := bateau_type_package.prixParHeureDeLocation(nom_btype); 
+   dbms_output.put_line('Le Prix de la location du type de bateau ' ||nom_btype|| ' est ' || prix);
+   
+   dbms_output.put_line('=========================================================================');
+   BATEAU_TYPE_PACKAGE.ajouterUnTypeDeBateau(nom_btype, 9.5);
+   dbms_output.put_line('Le type de bateau ' ||nom_btype|| '  a été bien ajouté');
+END; 
+/
 
 /*==============================================================*/
 /* Package 4 - Table CLIENTELE :  
@@ -161,11 +221,40 @@ END;
 
 
 /*==============================================================*/
-/* Package 6 - Table MARQUE :  
+/* Package 6 - Table MARQUE :
 /*
 /*==============================================================*/
 set serveroutput on
-...
+CREATE OR REPLACE PACKAGE MARQUE_PACKAGE AS
+-- Verifier qu'une marque de bateau existe.
+   PROCEDURE verifExistMarque(nom_marque MARQUE.MRQ_NOM%TYPE);
+END MARQUE_PACKAGE;
+/
+CREATE OR REPLACE PACKAGE BODY MARQUE_PACKAGE AS
+-- Verifier qu'une marque de bateau existe.
+   PROCEDURE verifExistMarque(nom_marque MARQUE.MRQ_NOM%TYPE)
+   IS
+      existe number;
+   BEGIN
+      SELECT COUNT(*) INTO existe
+      FROM MARQUE MRQ 
+      WHERE MRQ.MRQ_NOM = nom_marque;
+      IF(existe != 1) THEN
+         RAISE_APPLICATION_ERROR(-20001,'Aucune marque n''est enregistré pour ce nom : "'||nom_marque);
+      END IF;
+   END verifExistMarque;
+END MARQUE_PACKAGE;
+/
+
+DECLARE 
+   nom_marque MARQUE.MRQ_NOM%TYPE;
+BEGIN 
+   nom_marque := 'Hunter';
+   
+   MARQUE_PACKAGE.verifExistMarque(nom_marque); 
+   dbms_output.put_line('La marque de bateau ' ||nom_marque||' existe');
+END; 
+/
 
 
 /*==============================================================*/
