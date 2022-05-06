@@ -197,8 +197,58 @@ END;
 /* Package 4 - Table CLIENTELE :  
 /*
 /*==============================================================*/
-set serveroutput on
-...
+set serveroutput on ;
+CREATE OR REPLACE PACKAGE CLIENTELE_PACKAGE AS 
+
+   -- Retourne le nombre de client qui habitent dans une ville donnée
+   FUNCTION nbClient(ville CLIENTELE.CL_ADDR_VILLE%type) RETURN number; 
+
+   -- Mettre à jours le code postal d'une ville
+   PROCEDURE updateVilleCP(ville CLIENTELE.CL_ADDR_VILLE%type, code CLIENTELE.CL_ADDR_CP%type); 
+
+END CLIENTELE_PACKAGE; 
+/
+
+CREATE OR REPLACE PACKAGE BODY CLIENTELE_PACKAGE AS 
+
+   -- Retourne le nombre de client qui habitent à Paris
+   FUNCTION nbClient(ville CLIENTELE.CL_ADDR_VILLE%type)  RETURN number
+   IS 
+      nb_cl number;
+   BEGIN 
+      SELECT COUNT(*) INTO nb_cl 
+      FROM CLIENTELE
+      WHERE CL_ADDR_VILLE = ville;
+      RETURN nb_cl;
+   END nbClient; 
+
+  -- Mettre à jours le code postal d'une ville
+   PROCEDURE updateVilleCP(ville CLIENTELE.CL_ADDR_VILLE%type, code CLIENTELE.CL_ADDR_CP%type)
+   IS 
+   BEGIN 
+      UPDATE CLIENTELE
+      SET CL_ADDR_CP = code
+      WHERE CL_ADDR_VILLE = ville;
+      dbms_output.put_line('Requête update sur la table CLIENTELE exécutée...'); 
+   END updateVilleCP; 
+    
+END CLIENTELE_PACKAGE; 
+/
+
+-- Test de mon pakcage
+DECLARE 
+    code CLIENTELE.CL_ADDR_CP%type := 75000;
+    nb_cl number;
+    ville CLIENTELE.CL_ADDR_VILLE%type;
+BEGIN 
+   ville := 'Paris';
+   nb_cl := CLIENTELE_PACKAGE.nbClient(ville); 
+   dbms_output.put_line('Nombre de client dans la ville de "' || ville ||'"  : ' || nb_cl); 
+
+   CLIENTELE_PACKAGE.updateVilleCP(ville, code); 
+END; 
+/
+
 
 
 /*==============================================================*/
