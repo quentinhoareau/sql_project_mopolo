@@ -11,7 +11,7 @@ CREATE OR REPLACE PACKAGE BATEAU_PACKAGE AS
    -- Retourne le nombre de bateau utlisable actuellement 
    FUNCTION nbBateauUtilisablePort(name_port PORT.PRT_NOM%type) RETURN number; 
 
-   -- Mettre à jours tous les status (utilisable ou non) dees bateaux situé sur un port donnée en paramètre
+   -- Mettre à jours tous les statuts (utilisable ou non) des bateaux situé sur un port donnée en paramètre
    PROCEDURE updateBateauStatusParPort(name_port PORT.PRT_NOM%type, utilisable BATEAU.BT_UTILISABLE%type); 
 
 END BATEAU_PACKAGE; 
@@ -402,7 +402,11 @@ INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARB
 
 /*==============================================================*/
 /* Trigger 2 :
-/* Un même bateau ne peut être loué sur un même créneau horaire                   
+/* Un même bateau ne peut être loué sur un même créneau horaire          
+/* Exemple : Si un client réserve un bateau du 03/04/2022 entre 08:00 et 20:00, 
+/* et l’autre client loue le même bateau le même jour de 19:00 à 23:00, alors il 
+/* est impossible de faire la réservation pour le deuxième client car il agit sur 
+/* la partie d’un créneau déjà loué.         
 /*==============================================================*/
 --Création du trigger
 CREATE OR REPLACE TRIGGER RESERVATION_CHECK

@@ -26,7 +26,7 @@ GROUP BY BT_IMMATRICULE;
 -- Req 5 -  Tous les bateaux qui consomme du 'Diesel' en carburant
 SELECT BT_IMMATRICULE, BT_TYPE_CARBURANT
 FROM BATEAU
-WHERE BT_TYPE_CARBURANT = 'Diesel'
+WHERE BT_TYPE_CARBURANT = 'Diesel';
 
 
 ----------------CONSULTATION - 5 requêtes impliquant 2 tables avec jointures internes dont 1 externe + 1 group by + 1 tri----------------
