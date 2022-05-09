@@ -1,5 +1,4 @@
 -- Package_plsql_BoatBooking_Hoareau_Diallo_Aittahar.sql
--- Tuto/docs Package PLSQL : https://www.tutorialspoint.com/plsql/plsql_packages.htm
 
 /*==============================================================*/
 /* Package 1 - Table BATEAU :  
@@ -51,6 +50,7 @@ DECLARE
    portConcerne PORT.PRT_NOM%type;
 BEGIN 
    portConcerne := 'Port Lympia';
+   BATEAU_PACKAGE.updateBateauStatusParPort(portConcerne, 0); 
    nbBateauUtili := BATEAU_PACKAGE.nbBateauUtilisablePort(portConcerne); 
    dbms_output.put_line('Nombre de bateau(x) sur le port : "' || portConcerne ||'" utilisable actuellement: ' || nbBateauUtili); 
 
@@ -112,7 +112,7 @@ DECLARE
    port_name PORT.PRT_NOM%type;
 BEGIN 
    port_name := 'Port Lympia';
-   
+   PORT_PACKAGE.updatePortCapBat(port_name, 10); 
    cap := PORT_PACKAGE.nbPlacePort(port_name); 
    dbms_output.put_line('Capacité total du port AVANT UPDATE : ' || cap); 
    PORT_PACKAGE.updatePortCapBat(port_name, 20); 
@@ -159,6 +159,7 @@ CREATE OR REPLACE PACKAGE BODY BATEAU_TYPE_PACKAGE AS
          SELECT MAX(BTYPE_ID) + 1 INTO id_btype
          FROM BATEAU_TYPE;
          INSERT INTO BATEAU_TYPE(btype_id, btype_nom, btype_prix_heure) VALUES(id_btype, nom, prix);
+         dbms_output.put_line('Le type de bateau ' ||nom|| '  a été bien ajouté');
       ELSE
          RAISE_APPLICATION_ERROR(-20001,'Le type de bateau: '||nom||' existe deja.');
       END IF;
@@ -192,10 +193,11 @@ DECLARE
    nom_btype BATEAU_TYPE.BTYPE_NOM%TYPE;
    prixHL BATEAU_TYPE.BTYPE_PRIX_HEURE%TYPE;
 BEGIN 
+   DELETE FROM BATEAU_TYPE
+   WHERE btype_nom = 'Planche';
    nom_btype := 'Planche';
    prixHL := 9.5;
    BATEAU_TYPE_PACKAGE.ajouterUnTypeDeBateau(nom_btype, prixHL);
-   dbms_output.put_line('Le type de bateau ' ||nom_btype|| '  a été bien ajouté');
    
    dbms_output.put_line('=========================================================================');
    prix := BATEAU_TYPE_PACKAGE.prixParHeureDeLocation(nom_btype); 
@@ -271,7 +273,7 @@ CREATE OR REPLACE PACKAGE RESERVATION_PACKAGE AS
    FUNCTION prixReservation(bat_imma reservation.BT_IMMATRICULE%type, date_deb reservation.RES_DATE_DEBUT%type) RETURN number; 
 
    --Supprimer tous les réservation d'un client 
-   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type); 
+   PROCEDURE supprimerReservationClient(cli_id RESERVATION.CL_ID%type); 
 
 END RESERVATION_PACKAGE; 
 /
@@ -304,10 +306,10 @@ CREATE OR REPLACE PACKAGE BODY RESERVATION_PACKAGE AS
    END prixReservation; 
 
    --Supprimer tous les réservation d'un client 
-   PROCEDURE supprimerReservationClient(cl_id CLIENTELE.CL_ID%type)  IS 
+   PROCEDURE supprimerReservationClient(cli_id RESERVATION.CL_ID%type)  IS 
    BEGIN 
       DELETE FROM RESERVATION 
-      WHERE RESERVATION.CL_ID = cl_id; 
+      WHERE CL_ID = cli_id; 
    END supprimerReservationClient;  
 
 
@@ -408,6 +410,8 @@ CREATE OR REPLACE TRIGGER TRIGGER_BATEAU_PORT
   DECLARE
       nb_total number(4);
       nb_bat number(4);
+      TABLE_MUTANTE EXCEPTION;
+      PRAGMA EXCEPTION_INIT(TABLE_MUTANTE, -4091);
   BEGIN
       nb_total := 0;
       nb_bat := 0;
@@ -419,19 +423,28 @@ CREATE OR REPLACE TRIGGER TRIGGER_BATEAU_PORT
       SELECT COUNT(*) INTO nb_bat
       FROM BATEAU
       WHERE PRT_ID = :new.PRT_ID;
-
+      
       IF (nb_bat >= nb_total)
           THEN RAISE_APPLICATION_ERROR(-20000,'Impossible d''ajouter un bateau, le port est complet');
       END IF;
+  
+      EXCEPTION
+      WHEN TABLE_MUTANTE THEN 
+         DBMS_OUTPUT.PUT_LINE('Fausse alerte, on continue le trigger pendant la mutation de la table');
+
+
   END TRIGGER_BATEAU_PORT;
  /
 
 -- Tester le trigger :
--- Description : On ne pourra pas ajouter les 2 bateaux dans le Port Lympia car il possède déjà 3 bateaux sur 4 places disponibles, seulement le NicholsonOne pourra être enregistré.
+-- Description : On ne pourra pas ajouter les 2 bateaux dans le Port de Saint-Gilles car il possède déjà 1 bateau sur 2 places disponibles, seulement le NicholsonOne pourra être enregistré.
+DELETE FROM BATEAU 
+WHERE BT_IMMATRICULE IN ('RUB71118', 'RUB74008');
+
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUB71118','NicholsonOne','blanc',100,0.73,'Diesel',4,1,NULL,9.75,2.13,1972,'Bon',10,9,5,12);
+   VALUES ('RUB71118','NicholsonOne','blanc',100,0.73,'Diesel',4,1,NULL,9.75,2.13,1972,'Bon',10,9,2,12);
 INSERT INTO BATEAU(BT_IMMATRICULE,BT_NOM,BT_COULEUR,BT_VITESSE_MAX,BT_LITRE_CARBURANT_HEURE,BT_TYPE_CARBURANT,BT_MAX_PERSONNE,BT_UTILISABLE,BT_NOTE,BT_LONGUEUR,BT_LARGEUR,BT_ANNEE,BT_ETAT,MRQ_ID,BTYPE_ID,PRT_ID,BT_PRT_NUM_EMPLACEMENT)
-   VALUES ('RUB74008','NicholsonTwo','jaune',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,9,5,13);
+   VALUES ('RUB74008','NicholsonTwo','jaune',100,0.73,'Diesel',4,0,'Besoin de réparation au moteur',9.75,2.13,1972,'Mauvais',10,9,2,13);
 
 
 
@@ -449,7 +462,9 @@ CREATE OR REPLACE TRIGGER RESERVATION_CHECK
     BEFORE INSERT OR UPDATE ON RESERVATION
     FOR EACH ROW
     DECLARE
-        nbResByDates number(2);
+      nbResByDates number(2);
+      TABLE_MUTANTE EXCEPTION;
+      PRAGMA EXCEPTION_INIT(TABLE_MUTANTE, -4091);
     BEGIN
         SELECT COUNT(*) INTO nbResByDates FROM RESERVATION
         WHERE (( RES_DATE_DEBUT BETWEEN :NEW.RES_DATE_DEBUT AND :NEW.RES_DATE_FIN)
@@ -459,14 +474,20 @@ CREATE OR REPLACE TRIGGER RESERVATION_CHECK
        IF nbResByDates >= 1 THEN 
             RAISE_APPLICATION_ERROR(-20001,'Impossible de réserver sur ce crénaux pour le BATEAU : "'||:NEW.BT_IMMATRICULE||'" car une autre réservation est déjà programmée sur les mêmes dates.');
        END IF;
+
+      EXCEPTION
+         WHEN TABLE_MUTANTE THEN 
+         DBMS_OUTPUT.PUT_LINE('Fausse alerte, on continue le trigger pendant la mutation de la table');
        
     END;
 /
 
 -- Tester le trigger :
 -- Description : Le client 2 ne pourra pas réserver sur la périoide indiqué (req 2) car il impacte sur les dates du client 1 (req 1), une erreur sera déclanchée
+DELETE FROM RESERVATION -- Réinitialisation du TEST
+WHERE BT_IMMATRICULE = 'TOW49765';
 INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
-    VALUES(1,'TOR53026',TO_DATE('2025-03-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2025-03-15 17:00:00','yyyy-mm-dd hh24:mi:ss'));
+    VALUES(1,'TOW49765',TO_DATE('2025-03-10 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2025-03-15 17:00:00','yyyy-mm-dd hh24:mi:ss'));
 INSERT INTO RESERVATION(CL_ID,BT_IMMATRICULE,RES_DATE_DEBUT,RES_DATE_FIN)
-   VALUES(2,'TOR53026',TO_DATE('2025-03-09 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2025-03-12 17:00:00','yyyy-mm-dd hh24:mi:ss'));
+   VALUES(2,'TOW49765',TO_DATE('2025-03-09 09:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2025-03-12 17:00:00','yyyy-mm-dd hh24:mi:ss'));
 

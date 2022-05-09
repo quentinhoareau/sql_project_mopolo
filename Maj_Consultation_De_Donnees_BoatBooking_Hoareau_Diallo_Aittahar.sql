@@ -153,7 +153,7 @@ AND CL_PRENOM = 'Georgina';
 -- Req 1 - On souhaite mettre tous les bateaux situé au port 'Port Nice Carras' non utilisable car ce port est en réparation.
 UPDATE BATEAU
 SET BT_UTILISABLE = 0
-WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE  prt_nom = 'Port Nice Carras' );
+WHERE PRT_ID = (SELECT PRT_ID FROM PORT WHERE prt_nom = 'Port Nice Carras' );
 
 -- Req 2 - Le client Smith Keira veut changer sa date de début de reservation pour le bateau numero TOR53026 de 15/02/23 09:00:00 a 15/01/23 09:00:00.
 UPDATE RESERVATION RES
