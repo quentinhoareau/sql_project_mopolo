@@ -16,4 +16,4 @@ Ensuite, à propos de nos tarifs. Le prix se calcule en fonction d’un type de 
 - Etape 4 : Pour finir, exécuter  "Maj_Consultation_De_Donnees_BoatBooking_Hoareau_Diallo_Aittahar.sql" pour voir l'affichages de nos reqûetes de consultation / Mise à jours.
 
 Information : Lors de l'installation des scripts aucune erreur ne sera causée involontairement, uniquement le fichier "Package_plsql_BoatBooking_Hoareau_Diallo_Aittahar.sql" qui créera des exceptions volontaires de notre part pour tester certains packages / triggers. 
-/!\ Lors de la première exécution du code du fichier "Schema_physique_BoatBooking_Hoareau_Diallo_Aittahar.sql", des erreurs seront probablement générés car a début du code nous supprimons les tables que l'on va insérer pour limiter les erreurs. Donc si les tables n'existent pas forcément elles vont générer des erreurs.
+⚠️ Lors de la première exécution du code du fichier "Schema_physique_BoatBooking_Hoareau_Diallo_Aittahar.sql", des erreurs seront probablement générés car a début du code nous supprimons les tables que l'on va insérer pour limiter les erreurs. Donc si les tables n'existent pas forcément elles vont générer des erreurs.
